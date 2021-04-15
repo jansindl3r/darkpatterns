@@ -1,0 +1,18 @@
+<div class="highlight gap-bottom h3">
+   {{content}}
+</div>
+
+{% for text_entry, illustration in entries %}
+    <div class="category entry gap-bottom">    
+        <div class="text">{{text_entry}}</div>
+        {% if illustration.endswith('.png') %}
+        <picture class="static-background">
+            <img src="{{illustration}}" alt="Flowers">
+        </picture>
+        {% else %}
+        <div class="interactive-background">
+            {{illustration}}
+        </div>
+        {% endif %}
+    </div> 
+{% endfor %}

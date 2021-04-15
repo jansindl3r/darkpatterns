@@ -1,0 +1,241 @@
+.gap-top {
+  margin-top: 2rem !important;
+}
+
+.gap-bottom {
+  margin-bottom: 2rem;
+}
+
+.interactive-background {
+  background: #0092fc;
+}
+
+.static-background {
+  background: #f7901e;
+}
+
+#intro > div#header {
+  background: #0092fc;
+  max-width: 72ch;
+  display: block;
+  padding-bottom: 43.575ch;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+#intro > div#header > div {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+#intro > div#header > div:nth-child(0) {
+  background-image: url("../assets/header/7.png");
+  background-size: 100%;
+}
+#intro > div#header > div:nth-child(1) {
+  background-image: url("../assets/header/6.png");
+  background-size: 100%;
+}
+#intro > div#header > div:nth-child(2) {
+  background-image: url("../assets/header/5.png");
+  background-size: 100%;
+}
+#intro > div#header > div:nth-child(3) {
+  background-image: url("../assets/header/4.png");
+  background-size: 100%;
+}
+#intro > div#header > div:nth-child(4) {
+  background-image: url("../assets/header/3.png");
+  background-size: 100%;
+}
+#intro > div#header > div:nth-child(5) {
+  background-image: url("../assets/header/2.png");
+  background-size: 100%;
+}
+#intro > div#header > div:nth-child(6) {
+  background-image: url("../assets/header/1.png");
+  background-size: 100%;
+}
+#intro h1 {
+  font-size: 2em;
+}
+
+.highlight {
+  color: #0092fc;
+}
+.highlight * {
+  color: inherit;
+}
+
+html, body {
+  font-family: "localNext";
+  font-weight: 400;
+  font-style: normal;
+  font-size: 17px;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  z-index: 1000;
+  display: flex;
+  gap: 1ch;
+  justify-content: center;
+  position: sticky;
+  padding: 1em 0em;
+  top: 0;
+}
+nav a:nth-child(1) {
+  background: black;
+}
+nav a:nth-child(2) {
+  background: #ff2b06;
+}
+nav a:nth-child(3) {
+  background: #00e770;
+}
+nav a:nth-child(4) {
+  background: #ff8bfc;
+}
+nav a:nth-child(5) {
+  background: #f7901e;
+}
+nav a, nav a:active, nav a:visited, nav a:focus {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5em 1.4em;
+  border-radius: 0.7em;
+}
+
+.h2, h2 {
+  font-size: 2rem;
+}
+
+.h3, h3 {
+  font-size: 1.5rem;
+}
+
+.category.entry {
+  display: flex;
+  width: 100%;
+  min-height: 14em;
+}
+.category.entry > * {
+  width: 50%;
+}
+.category.entry > picture {
+  width: 50%;
+}
+.category.entry > picture > img {
+  width: 50%;
+}
+.category.entry:nth-of-type(2n+1) {
+  flex-direction: row-reverse;
+}
+
+h1, p {
+  margin: 0 auto;
+  max-width: 72ch;
+  text-align: center;
+  font-family: localNext;
+}
+
+p {
+  margin: 0 auto;
+  padding-bottom: 1em;
+}
+
+article > div {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+article > div:not(:last-child) {
+  margin-bottom: 4rem;
+}
+
+#top-shadow, #bottom-shadow {
+  position: fixed;
+  width: 100%;
+  height: 35px;
+  z-index: 999;
+  transition: background 0.4s ease-in-out;
+}
+
+#top-shadow {
+  top: 0;
+}
+
+#bottom-shadow {
+  bottom: 0;
+}
+
+.w-bg {
+  background: white;
+}
+
+.btn {
+  border-radius: 0.5;
+}
+
+.checkbox {
+  position: relative;
+  width: 2em;
+  display: inline-block;
+  position: relative;
+}
+.checkbox span {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  background: white;
+  border: 2px solid gray;
+  box-sizing: border-box;
+}
+.checkbox:not(.rounded) input:checked + span::after, .checkbox:not(.rounded) input:checked + span::before {
+  transform: rotate(0deg);
+  transform: 50% 50%;
+  display: block;
+  position: absolute;
+}
+.checkbox:not(.rounded) input:checked + span::after {
+  content: "";
+  background: black;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  border-left: 10px solid #000;
+}
+.checkbox:not(.rounded) input:checked + span::before {
+  content: "";
+  background: black;
+  width: 50%;
+  bottom: 0;
+  left: 0;
+  border-bottom: 10px solid #000;
+}
+.checkbox.rounded span {
+  border-radius: 100% !important;
+  width: 2.2em;
+  height: 2.2em;
+}
+.checkbox.rounded input {
+  opacity: 0;
+}
+.checkbox.rounded input:checked + span::after {
+  background: #000;
+  content: "";
+  width: 70%;
+  height: 70%;
+  margin-left: 15%;
+  margin-top: 15%;
+  position: absolute;
+  border-radius: 100%;
+}
+
+/*# sourceMappingURL=common.css.map */

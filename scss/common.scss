@@ -1,0 +1,236 @@
+$static-pic-background: rgb(0, 146, 252);
+$categories-colors: rgb(0, 0, 0), rgb(255, 43, 6), rgb(0, 231, 112), rgb(255, 139, 252), rgb(247, 144, 30);
+
+.gap-top {
+    margin-top: 2rem !important;
+}
+
+.gap-bottom {
+    margin-bottom: 2rem;
+}
+
+
+.interactive-background {
+    background: $static-pic-background;
+}
+
+.static-background {
+    background: rgb(247, 144, 30);
+}
+
+
+#intro {
+    > div#header {
+        background: $static-pic-background;
+        max-width: 72ch;
+        display: block;
+        padding-bottom: 72ch*1162/1920;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        > div {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+        @for $i from 0 through 6 {
+            > div:nth-child(#{$i}) {
+                background-image: url("../assets/header/"+(7-$i)+".png");
+                background-size: 100%;
+            }
+        }
+
+
+    }
+    h1 {
+        font-size: 2em;
+    }
+}
+
+
+
+.highlight {
+    color: $static-pic-background;
+    * {
+        color: inherit;
+    }
+}
+
+
+html, body {
+    font-family: "localNext";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    z-index: 1000;
+    display: flex;
+    gap: 1ch;
+    justify-content: center;
+    position: sticky;
+    padding: 1em 0em;
+    top: 0;
+    a {
+        @for $i from 1 through length($categories-colors) {
+            $c: nth($categories-colors, $i);
+            &:nth-child(#{$i}) {
+                background: $c;
+            }
+        }
+
+        &, &:active, &:visited, &:focus {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: .5em 1.4em;
+            border-radius: .7em;
+        }
+    }
+}
+
+
+
+
+.h2, h2 {
+    font-size: 2rem;
+}
+
+.h3, h3 {
+    font-size: 1.5rem;
+}
+.category.entry {
+    display: flex;
+    width: 100%;
+    min-height: 14em;
+    > * {
+        width: 50%;
+    }
+    > picture {
+        width: 50%;
+        > img {
+            width: 50%;
+        }
+    }
+    &:nth-of-type(2n+1) {
+        flex-direction: row-reverse;
+    }
+}
+
+h1, p {
+    margin: 0 auto;
+    max-width: 72ch;
+    text-align: center;
+    font-family: localNext;
+}
+
+p {
+    margin: 0 auto;
+    padding-bottom: 1em;
+}
+
+article > div {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &:not(:last-child) {
+        margin-bottom: 4rem;
+    }
+}
+
+
+#top-shadow, #bottom-shadow {
+    position: fixed;
+    // background: pink;
+    width: 100%;
+    height: 35px;
+    z-index: 999;
+    transition: background .4s ease-in-out;
+}
+
+#top-shadow {
+    top: 0;
+}
+
+#bottom-shadow {
+    bottom: 0;
+}
+
+.w-bg {
+    background: white;
+}
+
+.btn {
+    border-radius: .5;
+}
+
+
+.checkbox {
+    position: relative;
+    width: 2em;
+    display: inline-block;
+    position: relative;
+    span {        
+        width: 2em;
+        height: 2em;
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        background: white;
+        border: 2px solid gray;
+        box-sizing: border-box;
+
+    }
+    &:not(.rounded) {
+    input {
+        &:checked + span::after, &:checked + span::before {
+            transform: rotate(0deg);
+            transform: 50% 50%;
+            display: block;
+            position: absolute;
+        }
+        &:checked + span::after {
+            content: "";
+            background: black;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            border-left: 10px solid #000;
+        }
+        &:checked + span::before {
+            content: "";
+            background: black;
+            width: 50%;
+            bottom: 0;
+            left: 0;
+            border-bottom: 10px solid #000;
+        }
+    }
+    }
+    &.rounded {
+        span {
+            border-radius: 100% !important;
+            width: 2.2em;
+            height: 2.2em;
+        }
+        input {
+            opacity: 0;
+            &:checked + span::after {
+                background: #000;
+                content: "";
+                width: 70%;
+                height: 70%;
+                margin-left: 15%;
+                margin-top: 15%;
+                position: absolute;
+                border-radius: 100%;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,1 @@
+Nutnost přihlášení (sociální tlak)Uživatel musí provést přihlášení, nebo si vytvořit nový účet (a tedy sdílet informace o jeho profilu), jen aby mohl navštívit webovou stránku. Některé soubory cookies fungují tak, že i v případě neodsouhlasení, nebo použití adblocku, nám neumožní na stránku vůbec vstoupit.
