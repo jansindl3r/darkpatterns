@@ -43,7 +43,7 @@ $categories-colors: rgb(0, 0, 0), rgb(255, 43, 6), rgb(0, 231, 112), rgb(255, 13
 
     }
     h1 {
-        font-size: 2em;
+        font-size: 2.3em;
     }
 }
 
@@ -72,7 +72,7 @@ nav {
     gap: 1ch;
     justify-content: center;
     position: sticky;
-    padding: 1em 0em;
+    padding: 2em 0em;
     top: 0;
     a {
         @for $i from 1 through length($categories-colors) {
@@ -130,6 +130,7 @@ h1, p {
 p {
     margin: 0 auto;
     padding-bottom: 1em;
+    font-weight: 400;
 }
 
 article > div {
@@ -186,32 +187,25 @@ article > div {
         box-sizing: border-box;
 
     }
-    &:not(.rounded) {
+    &:not(.rounded){
     input {
-        &:checked + span::after, &:checked + span::before {
-            transform: rotate(0deg);
-            transform: 50% 50%;
+        &:checked + span::after {
+            transform: rotate(40deg);
+            transform-origin: 100% 66%;
             display: block;
             position: absolute;
-        }
-        &:checked + span::after {
             content: "";
-            background: black;
             top: 0;
-            left: 50%;
-            height: 100%;
-            border-left: 10px solid #000;
-        }
-        &:checked + span::before {
-            content: "";
-            background: black;
-            width: 50%;
-            bottom: 0;
             left: 0;
+            height: 125%;
+            width: 66%;
+            border-right: 10px solid #000;
             border-bottom: 10px solid #000;
+            box-sizing: border-box;
         }
     }
-    }
+}
+    
     &.rounded {
         span {
             border-radius: 100% !important;
