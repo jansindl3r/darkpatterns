@@ -7,24 +7,36 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/categories.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/intro.css">
+    <link rel="stylesheet" href="css/pluginy_odkazy_projekt.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="link" id="uvod">
+    <div id="podklad"></div>
     <div id="top-shadow">
     </div>
-    <nav>
-        <a href="#">úvod</a>
-        <a href="#">kategorie</a>
-        <a href="#">užitečné pluginy</a>
-        <a href="#">užitečné odkazy</a>
-        <a href="#">o projektu</a>
+    </div>
+    <nav class="color-white">
+        <a href="#uvod">úvod</a>
+        <a href="#kategorie">kategorie</a>
+        <a href="#uzitecne-pluginy">užitečné pluginy</a>
+        <a href="#uzitecne-odkazy">užitečné odkazy</a>
+        <a href="#o-projektu">o projektu</a>
     </nav>
     <article>
-        {% for entry in entries %}
-            <div class="entry-wrapper">
-            {{ entry }}
+        {% for entry, id in zip(entries, ["uvod", "kategorie", "uzitecne-pluginy", "uzitecne-odkazy", "o-projektu"]) %}
+            <div class="entry-wrapper{% if loop.index0 >= 2 %} center-text text-tile{% endif %}">
+                {% if loop.index0 != 0 %}
+                    <div class="link" id="{{id}}">
+                    </div>
+                {% endif %}
+                {{ entry }}
             </div>
         {% endfor %}
+        <div class="center-text">
+            <a id="download"  href="podklad.png" download="picture.png">download</a>
+        </div>
     </article>
     <div id="bottom-shadow">
     </div>

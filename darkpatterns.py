@@ -4,9 +4,10 @@ import markdown
 
 base = Path(__file__).parent
 
-env = Environment(loader=FileSystemLoader(str(base/"templates")))
+env = Environment(loader=FileSystemLoader(str(base/"templates")), extensions=['jinja2.ext.loopcontrols'])
 env.trim_blocks = True
 env.lstrip_blocks = True
+env.globals.update(zip=zip)
 
 
 def categories(path):

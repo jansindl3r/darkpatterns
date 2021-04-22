@@ -5,14 +5,32 @@
         <a class="btn">3</a>
     </div>
     <div id="content">
-        <div>
-            A
+        <div id="fields">
+            <div class="visible">
+                A
+            </div>
+            <div class="hidden">
+                B
+            </div>
+            <div class="hidden">
+                C
+            </div>
         </div>
-        <div>
-            B
-        </div>
-        <div>
-            C
-        </div>
+        <span onclick="skrytePoplatky()">continue</span>
     </div>
+    <script>
+        const row = document.querySelector("#skryte-poplatky>#row").children
+        const fields = document.querySelector("#skryte-poplatky>#content>#fields").children
+        const skrytePoplatky = () => {
+            for (let i=0; i < 3; i++) {
+                if (fields[i].classList.contains('visible')) {
+                    fields[i].classList.remove('visible')
+                    fields[i].classList.add('hidden')
+                    fields[(i+1)%3].classList.remove("hidden")
+                    fields[(i+1)%3].classList.add("visible")
+                    break
+                }
+            }
+        }
+    </script>
 </div>

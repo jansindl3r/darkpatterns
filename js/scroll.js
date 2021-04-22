@@ -13,13 +13,6 @@ const gradient = (degree, gradient) => {
     return `linear-gradient(${degree}deg, transparent,rgb(${gradient}))`
 }
 
-const layers = document.getElementById("header").children
-
-const updateHeader = () => {
-    for (let i=0; i < layers.length; ++i) {
-        layers[i].style.marginTop = `${(i+1)*(-window.scrollY/10)}px`
-    }
-}
 
 const updateShadows = () => {
     let doBottom = true
@@ -37,13 +30,11 @@ const updateShadows = () => {
 }
 
 updateShadows()
-updateHeader()
 
 window.addEventListener("scroll", () => {
     if (window.scrollY < height) {
         updateShadows()
     }
-    updateHeader()
 }) 
 
 window.addEventListener("resize", () => {
