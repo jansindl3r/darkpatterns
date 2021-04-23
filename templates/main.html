@@ -14,8 +14,6 @@
 <body>
     <div class="link" id="uvod">
     <div id="podklad"></div>
-    <div id="top-shadow">
-    </div>
     </div>
     <nav class="color-white">
         <a href="#uvod">úvod</a>
@@ -33,12 +31,17 @@
                 {% endif %}
                 {{ entry }}
             </div>
+            {% if loop.index < loop.length %}
+            <div class="divider">
+            </div>
+            {% endif %}
         {% endfor %}
         <div class="center-text">
             <a id="download"  href="podklad.png" download="picture.png">download</a>
         </div>
     </article>
-    <div id="bottom-shadow">
+    <div class="divider-bottom">
+        awdawd
     </div>
 </body>
 <script src="js/scroll.js">

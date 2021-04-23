@@ -27,10 +27,6 @@ html, body {
   font-size: 16px;
 }
 
-body {
-  padding-bottom: 10em;
-}
-
 h1 {
   font-size: 3rem;
 }
@@ -84,6 +80,8 @@ nav a:nth-child(5) {
 
 .entry-wrapper {
   position: relative;
+  max-width: 140ch;
+  margin: 0 auto;
 }
 
 .link {
@@ -95,6 +93,31 @@ picture img {
   height: 100%;
 }
 
+article > .divider {
+  height: 6rem;
+  width: 100%;
+  margin: 5rem 0;
+}
+article > .divider:nth-child(2) {
+  background: linear-gradient(rgba(255, 43, 6, 0) 0%, rgba(255, 43, 6, 0.0277777778) 8.3333333333%, rgba(255, 43, 6, 0.1111111111) 16.6666666667%, rgba(255, 43, 6, 0.25) 25%, rgba(255, 43, 6, 0.4444444444) 33.3333333333%, rgba(255, 43, 6, 0.6944444444) 41.6666666667%, #ff2b06 50%, #ff2b06 50%, rgba(255, 43, 6, 0.6944444444) 58.3333333333%, rgba(255, 43, 6, 0.4444444444) 66.6666666667%, rgba(255, 43, 6, 0.25) 75%, rgba(255, 43, 6, 0.1111111111) 83.3333333333%, rgba(255, 43, 6, 0.0277777778) 91.6666666667%, rgba(255, 43, 6, 0) 100%);
+}
+article > .divider:nth-child(4) {
+  background: linear-gradient(rgba(0, 231, 112, 0) 0%, rgba(0, 231, 112, 0.0277777778) 8.3333333333%, rgba(0, 231, 112, 0.1111111111) 16.6666666667%, rgba(0, 231, 112, 0.25) 25%, rgba(0, 231, 112, 0.4444444444) 33.3333333333%, rgba(0, 231, 112, 0.6944444444) 41.6666666667%, #00e770 50%, #00e770 50%, rgba(0, 231, 112, 0.6944444444) 58.3333333333%, rgba(0, 231, 112, 0.4444444444) 66.6666666667%, rgba(0, 231, 112, 0.25) 75%, rgba(0, 231, 112, 0.1111111111) 83.3333333333%, rgba(0, 231, 112, 0.0277777778) 91.6666666667%, rgba(0, 231, 112, 0) 100%);
+}
+article > .divider:nth-child(6) {
+  background: linear-gradient(rgba(255, 139, 252, 0) 0%, rgba(255, 139, 252, 0.0277777778) 8.3333333333%, rgba(255, 139, 252, 0.1111111111) 16.6666666667%, rgba(255, 139, 252, 0.25) 25%, rgba(255, 139, 252, 0.4444444444) 33.3333333333%, rgba(255, 139, 252, 0.6944444444) 41.6666666667%, #ff8bfc 50%, #ff8bfc 50%, rgba(255, 139, 252, 0.6944444444) 58.3333333333%, rgba(255, 139, 252, 0.4444444444) 66.6666666667%, rgba(255, 139, 252, 0.25) 75%, rgba(255, 139, 252, 0.1111111111) 83.3333333333%, rgba(255, 139, 252, 0.0277777778) 91.6666666667%, rgba(255, 139, 252, 0) 100%);
+}
+article > .divider:nth-child(8) {
+  background: linear-gradient(rgba(247, 144, 30, 0) 0%, rgba(247, 144, 30, 0.0277777778) 8.3333333333%, rgba(247, 144, 30, 0.1111111111) 16.6666666667%, rgba(247, 144, 30, 0.25) 25%, rgba(247, 144, 30, 0.4444444444) 33.3333333333%, rgba(247, 144, 30, 0.6944444444) 41.6666666667%, #f7901e 50%, #f7901e 50%, rgba(247, 144, 30, 0.6944444444) 58.3333333333%, rgba(247, 144, 30, 0.4444444444) 66.6666666667%, rgba(247, 144, 30, 0.25) 75%, rgba(247, 144, 30, 0.1111111111) 83.3333333333%, rgba(247, 144, 30, 0.0277777778) 91.6666666667%, rgba(247, 144, 30, 0) 100%);
+}
+
+.divider-bottom {
+  height: 3rem;
+  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1111111111) 33.3333333333%, rgba(0, 0, 0, 0.4444444444) 66.6666666667%, black 100%);
+  width: 100%;
+  margin-top: 6em;
+}
+
 .visible {
   visibility: visible;
 }
@@ -103,19 +126,19 @@ picture img {
   visibility: hidden;
 }
 
-article > div {
-  max-width: 140ch;
-  margin: 0 auto;
+p .button {
+  background: #0092fc;
+  color: #fff;
 }
 
 .category-entry {
   display: flex;
   flex-direction: row;
-  height: 20em;
+  min-height: 20em;
 }
 .category-entry > * {
   width: 50%;
-  margin: 2em;
+  margin: 2rem;
 }
 .category-entry:nth-child(2n) {
   flex-direction: row-reverse;
@@ -129,16 +152,21 @@ article > div {
 .category-entry .text > * {
   max-width: 70ch;
 }
+.category-entry .text > p:first-child {
+  font-size: 1.5em;
+  font-weight: 700;
+}
 .category-entry .illustration {
   align-items: center;
 }
 .category-entry .illustration picture {
-  height: 100%;
+  max-height: 20em;
   width: 100%;
   text-align: center;
 }
 .category-entry .illustration.interactive {
   background: #0092fc;
+  font-size: 1.5rem;
 }
 .category-entry .illustration.static {
   background: orange;
@@ -150,12 +178,15 @@ article > div {
 }
 
 .button {
-  background: #0092fc;
-  color: #fff;
+  cursor: pointer;
   font-size: 1.5rem;
   border-radius: 0.5em;
   padding: 0.5em;
   display: inline-block;
+  transition: transform 0.1s ease-in-out;
+}
+.button:hover {
+  transform: translateY(-0.5em);
 }
 
 .checkbox {

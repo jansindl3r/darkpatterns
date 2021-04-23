@@ -1,5 +1,9 @@
+@use 'sass:color';
+@use 'sass:list';
+@use 'mixins';
+
 $static-pic-background: rgb(0, 146, 252);
-$categories-colors: rgb(0, 0, 0), rgb(255, 43, 6), rgb(0, 231, 112), rgb(255, 139, 252), rgb(247, 144, 30);
+$categories-colors: rgba(0, 0, 0, 1), rgba(255, 43, 6, 1), rgba(0, 231, 112, 1), rgba(255, 139, 252, 1), rgba(247, 144, 30, 1);
 
 #podklad_ {
     position: absolute;
@@ -29,10 +33,6 @@ html, body {
     font-weight: 400;
     // width: 100vw;
     font-size: 16px;
-}
-
-body {
-    padding-bottom: 10em;
 }
 
 h1 {
@@ -79,6 +79,8 @@ nav {
 
 .entry-wrapper {
     position: relative;
+    max-width: 140ch;
+    margin: 0 auto;
 }
 
 .link {
@@ -92,6 +94,26 @@ picture {
     }
 }
 
+article > .divider {
+    height: 6rem;
+    width: 100%;
+    margin: 5rem 0;
+    @for $i from 2 through length($categories-colors) {
+        $color: nth($categories-colors, $i);
+        &:nth-child(#{($i - 1) * 2}) {
+            @include mixins.smooth-opacity-gradient($color, 6);
+            // background: linear-gradient(rgba(255, 0, 0, 0), rgba(255, 0, 0, 1), rgba(255, 0, 0, 0));
+        }
+    }
+}
+
+.divider-bottom {
+    height: 3rem;
+    @include mixins.smooth-opacity-gradient(black, 3, $both_sides: false);
+    width: 100%;
+    margin-top: 6em;
+}
+
 .visible {
     visibility: visible;
 }
@@ -100,20 +122,20 @@ picture {
     visibility: hidden;
 }
 
-article {
-    > div {
-        max-width: 140ch;
-        margin: 0 auto;
+p {
+    .button {
+        background: #0092fc;
+        color: #fff;
     }
 }
 
 .category-entry {
     display: flex;
     flex-direction: row;
-    height: 20em;
+    min-height: 20em;
     > * {
         width: 50%;
-        margin: 2em;
+        margin: 2rem;
     }
     &:nth-child(2n) {
         flex-direction: row-reverse;
@@ -128,12 +150,16 @@ article {
         > * {
             max-width: 70ch;
         }
+        > p:first-child {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
     }
     .illustration {
         align-items: center;
 
         picture {
-            height: 100%;
+            max-height: 20em;
             width: 100%;
             text-align: center;               
             img {
@@ -142,6 +168,7 @@ article {
 
         &.interactive {
             background: $static-pic-background;
+            font-size: 1.5rem;
         }
 
         &.static {
@@ -156,12 +183,15 @@ article {
 }
 
 .button {
-    background: $static-pic-background;
-    color: #fff;
+    cursor: pointer;
     font-size: 1.5rem;
     border-radius: .5em;
     padding: .5em;
     display: inline-block;
+    transition: transform .1s ease-in-out;
+    &:hover {
+        transform: translateY(-.5em);
+    }
 }
 
 .checkbox {
