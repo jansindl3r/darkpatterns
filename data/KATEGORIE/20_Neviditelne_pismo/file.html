@@ -1,4 +1,17 @@
 <div id="neviditelne-pismo">
     <div id="small"><div>PODMÍNKY:</div></div>
-    <div id="magnifier"><div>PODMÍNKY:</div></div>
+    <div id="magnifier"><div><div>PODMÍNKY:</div></div></div>
 </div>
+<script>
+    const neviditelnePismo= document.getElementById("neviditelne-pismo")
+    const magnifier = document.getElementById("magnifier")
+    neviditelnePismo.onmousemove = (e) => {
+        const box = neviditelnePismo.getBoundingClientRect()
+        const x = `${e.clientX  - box.x}px`
+        const y = `${e.clientY  - box.y}px`
+        magnifier.style.left = x
+        magnifier.style.top = y
+        magnifier.firstChild.firstChild.style.marginLeft = `${-(e.clientX - box.x)}px`
+        magnifier.firstChild.firstChild.style.marginTop = `${-(e.clientY - box.y)*2}px`
+    }
+</script>

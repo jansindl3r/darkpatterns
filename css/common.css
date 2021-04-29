@@ -25,14 +25,25 @@ html, body {
   font-family: "font";
   font-weight: 400;
   font-size: 16px;
+  color: #111;
+}
+
+body {
+  background: #eee2;
 }
 
 h1 {
   font-size: 3rem;
+  line-height: 110%;
 }
 
 h2 {
   font-size: 1.75rem;
+  line-height: 115%;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 a {
@@ -59,23 +70,49 @@ nav {
 }
 nav a {
   color: inherit;
-  padding: 0.6em 1.5em;
+  padding: 0.6em 1.5em 0.45em;
   border-radius: 0.7em;
 }
 nav a:nth-child(1) {
   background-color: black;
 }
+nav a:nth-child(1):hover {
+  color: black;
+  background-color: white;
+}
 nav a:nth-child(2) {
   background-color: #ff2b06;
+}
+nav a:nth-child(2):hover {
+  color: #ff2b06;
+  background-color: white;
 }
 nav a:nth-child(3) {
   background-color: #00e770;
 }
+nav a:nth-child(3):hover {
+  color: #00e770;
+  background-color: white;
+}
 nav a:nth-child(4) {
   background-color: #ff8bfc;
 }
+nav a:nth-child(4):hover {
+  color: #ff8bfc;
+  background-color: white;
+}
 nav a:nth-child(5) {
   background-color: #f7901e;
+}
+nav a:nth-child(5):hover {
+  color: #f7901e;
+  background-color: white;
+}
+
+p {
+  max-width: 72ch;
+  margin: 0 auto;
+  line-height: 145%;
 }
 
 .entry-wrapper {
@@ -86,15 +123,11 @@ nav a:nth-child(5) {
 
 .link {
   position: absolute;
-  top: -6rem;
-}
-
-picture img {
-  height: 100%;
+  top: -9rem;
 }
 
 article > .divider {
-  height: 6rem;
+  height: 8rem;
   width: 100%;
   margin: 5rem 0;
 }
@@ -135,6 +168,8 @@ p .button {
   display: flex;
   flex-direction: row;
   min-height: 20em;
+  max-width: 130ch;
+  margin: 4rem auto;
 }
 .category-entry > * {
   width: 50%;
@@ -152,9 +187,8 @@ p .button {
 .category-entry .text > * {
   max-width: 70ch;
 }
-.category-entry .text > p:first-child {
-  font-size: 1.5em;
-  font-weight: 700;
+.category-entry picture img {
+  height: 100%;
 }
 .category-entry .illustration {
   align-items: center;
@@ -166,7 +200,7 @@ p .button {
 }
 .category-entry .illustration.interactive {
   background: #0092fc;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 .category-entry .illustration.static {
   background: orange;
@@ -181,7 +215,7 @@ p .button {
   cursor: pointer;
   font-size: 1.5rem;
   border-radius: 0.5em;
-  padding: 0.5em;
+  padding: 0.45em 0.5em 0.35em;
   display: inline-block;
   transition: transform 0.1s ease-in-out;
 }
@@ -191,7 +225,8 @@ p .button {
 
 .checkbox {
   font-size: inherit;
-  width: calc( 1.5em + 1ch);
+  width: 1.5em;
+  margin: -0.25em 1ch 0 1ch;
   height: 1.5em;
   display: inline-block;
   position: relative;
@@ -203,9 +238,12 @@ p .button {
   position: absolute;
   left: 0;
   display: inline-block;
-  background: white;
-  border: 2px solid gray;
+  background: #fff;
+  border: 2px solid silver;
   box-sizing: border-box;
+}
+.checkbox input {
+  opacity: 0;
 }
 .checkbox:not(.rounded) input:checked + span::after {
   transform: rotate(40deg);
@@ -232,6 +270,7 @@ p .button {
 .checkbox.rounded input:checked + span::after {
   background: #000;
   content: "";
+  left: 0;
   width: 70%;
   height: 70%;
   margin-left: 15%;

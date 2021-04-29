@@ -1,5 +1,7 @@
 from pathlib import Path 
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
+from bs4 import BeautifulSoup
+
 import markdown
 
 base = Path(__file__).parent
@@ -26,7 +28,9 @@ def categories(path):
         illustration = str(illustration)
         with open(text_entry) as input_file:
             content = markdown.markdown(input_file.read())
-            context['entries'].append((content, illustration))
+            soup = BeautifulSoup(content, "html.parser")
+            soup.find("p").name = "h3"
+            context['entries'].append((soup.prettify(), illustration))
     
     with open(path/"text.md", "r") as input_file:
         context['content'] = markdown.markdown(input_file.read())    

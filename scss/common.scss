@@ -4,6 +4,7 @@
 
 $static-pic-background: rgb(0, 146, 252);
 $categories-colors: rgba(0, 0, 0, 1), rgba(255, 43, 6, 1), rgba(0, 231, 112, 1), rgba(255, 139, 252, 1), rgba(247, 144, 30, 1);
+$text-black: #111;
 
 #podklad_ {
     position: absolute;
@@ -31,16 +32,27 @@ html, body {
     margin: 0;
     font-family: "font";
     font-weight: 400;
-    // width: 100vw;
     font-size: 16px;
+    color: $text-black;
+}
+
+body {
+    background: #eee2;
 }
 
 h1 {
     font-size: 3rem;
+    line-height: 110%;
 }
 
 h2 {
     font-size: 1.75rem;
+    line-height: 115%;
+}
+
+h3 {
+    font-size: 1.5rem;
+    // background: red;
 }
 
 a {
@@ -66,15 +78,25 @@ nav {
     z-index: 10000;
     a {
         color: inherit;
-        padding: .6em 1.5em;
+        padding: .6em 1.5em .45em;
         border-radius: .7em;
     }
     @for $i from 1 through length($categories-colors) {
         $color: nth($categories-colors, $i);
         a:nth-child(#{$i}) {
           background-color: $color;
+          &:hover {
+              color: $color;
+              background-color: white;
+          }
         }
       }
+}
+
+p {
+    max-width: 72ch;
+    margin: 0 auto;
+    line-height: 145%;
 }
 
 .entry-wrapper {
@@ -85,17 +107,13 @@ nav {
 
 .link {
     position: absolute;
-    top: -6rem;
+    top: -9rem;
 }
 
-picture {
-    img {
-        height: 100%;
-    }
-}
+
 
 article > .divider {
-    height: 6rem;
+    height: 8rem;
     width: 100%;
     margin: 5rem 0;
     @for $i from 2 through length($categories-colors) {
@@ -133,6 +151,8 @@ p {
     display: flex;
     flex-direction: row;
     min-height: 20em;
+    max-width: 130ch;
+    margin: 4rem auto;
     > * {
         width: 50%;
         margin: 2rem;
@@ -150,9 +170,10 @@ p {
         > * {
             max-width: 70ch;
         }
-        > p:first-child {
-            font-size: 1.5em;
-            font-weight: 700;
+    }
+    picture {
+        img {
+            height: 100%;
         }
     }
     .illustration {
@@ -168,7 +189,7 @@ p {
 
         &.interactive {
             background: $static-pic-background;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
 
         &.static {
@@ -186,7 +207,7 @@ p {
     cursor: pointer;
     font-size: 1.5rem;
     border-radius: .5em;
-    padding: .5em;
+    padding: .45em .5em .35em;
     display: inline-block;
     transition: transform .1s ease-in-out;
     &:hover {
@@ -196,7 +217,8 @@ p {
 
 .checkbox {
     font-size: inherit;
-    width: calc( 1.5em + 1ch);
+    width: 1.5em;
+    margin: -.25em 1ch 0 1ch;
     height: 1.5em;
     display: inline-block;
     position: relative;
@@ -207,9 +229,12 @@ p {
         position: absolute;
         left: 0;
         display: inline-block;
-        background: white;
-        border: 2px solid gray;
+        background: #fff;
+        border: 2px solid silver;
         box-sizing: border-box;
+    }
+    input {
+        opacity: 0;
     }
     &:not(.rounded){
         input {
@@ -241,6 +266,7 @@ p {
             &:checked + span::after {
                 background: #000;
                 content: "";
+                left: 0;
                 width: 70%;
                 height: 70%;
                 margin-left: 15%;

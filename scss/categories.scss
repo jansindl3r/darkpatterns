@@ -1,5 +1,5 @@
 #skryte-poplatky {
-    // padding: 2rem;
+    width: 100%;
     #row {
         display: flex;
         flex-direction: row;
@@ -36,12 +36,42 @@
     background: white;
 }
 
-
+#nucene-scrollovani {
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    > * {
+        min-height: 100%;
+        display: block;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 
 #confirmshaming {
 
 }
 
+#falesna-CTA-tlacitka {
+    > * {
+        background: white;
+        margin: 2px;
+        padding: 2em;
+        &:first-child {
+            border-radius: 1em 1em 0 0;
+        }
+        &:last-child {
+            padding-top: 1em;
+            padding-bottom: 1em;
+            border-radius:  0 0 1em 1em;
+        }
+    }
+    text-align: center;
+}
 
 #privacy-zuckering {
     #icon {
@@ -86,15 +116,10 @@
 #falesna-volitelna-tlacitka {
     > div {
         display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        grid-template-rows: repeat(4, 2.5em);
+        grid-template-columns: auto 1fr auto;
         grid-auto-flow: column;
-        margin: 0 auto;
-        > * {
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-        }
+        text-align: center;
+        margin: .75em 0;
     }
     
 }
@@ -117,16 +142,44 @@
 
 
 #neviditelne-pismo {
-
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: none;
+    overflow: hidden;
     #small {
-        font-size: 2em;
+        font-size: .5em;
     }
     #magnifier {
-        font-size: 4em;
+        font-size: 4.5em;
+        position: absolute;
+        > div {
+            margin-left: -10rem;
+            margin-top: -10rem;
+            padding-top: 10rem;
+            padding-left: 10rem;
+            box-sizing: border-box;
+            height: 20rem;
+            width: 20rem;
+            overflow: hidden;
+            background: #fff;
+            border: 2px #000 solid;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            > div {
+                transform: translateY(50%);
+            }
+            
+        }
     }
     #small, #magnifier {
-        text-align: center;
-        margin: 0 auto;
+        position: absolute;
         width: 100%;
+        text-align: center;
+        left: 0;
     }
 }
