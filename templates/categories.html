@@ -2,19 +2,29 @@
    {{content}}
 </div>
 
-{% for text_entry, illustration in entries %}
+{% for text_entry, illustration, illustration_type, hint_content in entries %}
     <div class="category-entry">    
-        <div class="text">{{text_entry}}</div>
-        {% if illustration.endswith('.png') %}
-        <div class="static-background illustration static">
-            <picture>
-                <img src="{{illustration}}" alt="Flowers">
-            </picture>
+        <div class="text">
+            {{text_entry}}
         </div>
+        {% if illustration_type == "image" %}
+            <div class="static-background illustration static">
+                <picture>
+                    <img src="{{illustration}}" alt="Flowers">
+                </picture>
+            </div>
         {% else %}
-        <div class="interactive-background illustration interactive">
-            {{illustration}}
-        </div>
+            <div>
+                <div class="interactive-background illustration interactive">
+                    {{illustration|safe}}
+                </div>
+                {% if hint_content %}
+                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                        <span class="pointer">...</span>
+                        <span style="display: None;">{{hint_content}}</span>
+                    </small>
+                {% endif %}
+            </div>
         {% endif %}
     </div> 
 {% endfor %}

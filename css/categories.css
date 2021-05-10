@@ -1,5 +1,6 @@
 #skryte-poplatky {
-  width: 100%;
+  padding: 1em;
+  width: calc( 100% - 4em);
 }
 #skryte-poplatky #row {
   display: flex;
@@ -11,12 +12,16 @@
   border-radius: 100%;
   font-size: 2rem;
   line-height: 3.2rem;
-  color: #000;
-  background: #fff;
+  color: #999;
+  background: #aaa;
   width: 1.5em;
   height: 1.5em;
   text-align: center;
   z-index: 1000;
+}
+#skryte-poplatky #row > a.active {
+  color: #000;
+  background: white;
 }
 #skryte-poplatky #row::before {
   position: absolute;
@@ -27,9 +32,61 @@
   width: 100%;
 }
 #skryte-poplatky #content {
-  margin-top: 1em;
   background: #fff;
+  margin-top: 1em;
   border-radius: 1em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+#skryte-poplatky #content > div {
+  position: relative;
+}
+#skryte-poplatky #content > div .visible {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#skryte-poplatky input[type=button] {
+  grid-column-start: 2;
+  margin: 1em;
+}
+
+#svabi-motel {
+  gap: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#svabi-motel.freeze, #svabi-motel .freeze {
+  pointer-events: none;
+}
+#svabi-motel > * {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  text-align: center;
+}
+#svabi-motel > * > * {
+  background: #fff;
+  padding: 0.2em;
+  border-radius: 0.2em;
+  user-select: none;
+  color: transparent;
+}
+#svabi-motel > * > *:not(.way):active {
+  background-color: red;
+}
+#svabi-motel > * > *.show {
+  opacity: 1 !important;
+  color: black;
+}
+#svabi-motel > * > *.correct {
+  background-color: green;
+  color: black;
+}
+#svabi-motel > *:not(:nth-child(1)) {
+  opacity: 0;
 }
 
 .bg-white {
@@ -50,10 +107,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
+}
+#nucene-scrollovani > *::after {
+  content: "Reklama";
+  font-size: 6rem;
+  position: absolute;
+}
+
+#confirmshaming input {
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
+}
+#confirmshaming input:hover {
+  background: #00e000;
+}
+#confirmshaming input.clicked {
+  opacity: 0;
+  cursor: default;
 }
 
 #falesna-CTA-tlacitka {
   text-align: center;
+  transition: opacity 0.1s ease-in;
 }
 #falesna-CTA-tlacitka > * {
   background: white;
@@ -67,6 +143,15 @@
   padding-top: 1em;
   padding-bottom: 1em;
   border-radius: 0 0 1em 1em;
+}
+#falesna-CTA-tlacitka > *:last-child:hover {
+  background: #00e000;
+  cursor: pointer;
+}
+#falesna-CTA-tlacitka.clicked {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
 }
 
 #privacy-zuckering #icon {

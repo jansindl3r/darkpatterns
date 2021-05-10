@@ -1,0 +1,31 @@
+<div id="svabi-motel">
+    {% set data = [
+        ["FAQ", "Nastavení", "Nápověda", "Další", "Změnit"],
+        ["Účet", "Zavolat", "Členství", "Profil", "Možnosti"],
+        ["Kontakty", "Formulář", "Poslat dopis", "Pomoc", "Infolinka"],
+        ["Vrátit zpět", "Error", "Účet byl zrušen", "Nelze provést", "Chyba systému"],
+        ] %}
+    {% set correct = [3, 1, 2, 2]%}
+    {% for column in data %}
+        <div>
+            {% set column_index = loop.index0 %}
+            {% for cell in column %}
+                <div {% if loop.index0 == correct[column_index] %} class="way" onclick="correct(this)"{% else %} onclick="this.classList.add('show')"{%endif%}>{{cell}}</div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    const correct = (el) => {
+        const nextElementSibling = el.parentNode.nextElementSibling
+        if (nextElementSibling) {
+           nextElementSibling.style.opacity = 1
+           el.parentNode.classList.add("freeze")
+        }
+        else {
+            el.parentNode.parentNode.classList.add("freeze")
+        }
+        el.classList.add("correct")
+    }    
+</script>

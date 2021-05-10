@@ -1,8 +1,8 @@
+import re
+import markdown
 from pathlib import Path 
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from bs4 import BeautifulSoup
-
-import markdown
 
 base = Path(__file__).parent
 
@@ -20,17 +20,28 @@ def categories(path):
     }
     for text_entry in text_entries:
         illustration = (path/(text_entry.stem+".png")).relative_to(base)
-        if not illustration.exists():
+        illustration_type = "image"
+        if illustration.exists():
+            illustration = str(illustration)
+        else:
             if (path/text_entry.stem/"file.html").exists():
                 with open(path/text_entry.stem/"file.html", "r") as input_file:
-                    illustration = input_file.read()
-
-        illustration = str(illustration)
+                    illustration = env.from_string(input_file.read()).render()
+                    illustration_type = "html"
+            else:
+                illustration = str(illustration)
+        
         with open(text_entry) as input_file:
             content = markdown.markdown(input_file.read())
             soup = BeautifulSoup(content, "html.parser")
             soup.find("p").name = "h3"
-            context['entries'].append((soup.prettify(), illustration))
+            hint = soup.find("p", string=re.compile("[H,h]int"))
+            if hint is not None:
+                hint_content = re.match(r"\([H,h]int:\ ?(.*)\)", hint.string).group(1)
+                hint.decompose()
+            else:
+                hint_content = None
+            context['entries'].append((soup.prettify(), illustration, illustration_type, hint_content))
     
     with open(path/"text.md", "r") as input_file:
         context['content'] = markdown.markdown(input_file.read())    
@@ -68,6 +79,7 @@ for subfolder, func in subfolders:
 
 
 template = env.get_template('main.html')
+
 
 with open("index.html", "w+") as output_file:
     output_file.write(template.render(**context))

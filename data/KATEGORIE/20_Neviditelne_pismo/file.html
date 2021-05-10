@@ -1,10 +1,16 @@
 <div id="neviditelne-pismo">
     <div id="small"><div>PODMÍNKY:</div></div>
-    <div id="magnifier"><div><div>PODMÍNKY:</div></div></div>
+    <div id="magnifier" style="display: none;"><div><div>PODMÍNKY:</div></div></div>
 </div>
 <script>
     const neviditelnePismo= document.getElementById("neviditelne-pismo")
     const magnifier = document.getElementById("magnifier")
+    neviditelnePismo.onmouseenter = () => {
+        magnifier.style.display = "block"
+    }
+    neviditelnePismo.onmouseleave = () => {
+        magnifier.style.display = "none"
+    }
     neviditelnePismo.onmousemove = (e) => {
         const box = neviditelnePismo.getBoundingClientRect()
         const x = `${e.clientX  - box.x}px`
