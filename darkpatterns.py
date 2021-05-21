@@ -33,7 +33,7 @@ def categories(path):
                     illustration_type = "html"
             else:
                 illustration = str(illustration)
-        
+                
         with open(text_entry) as input_file:
             content = markdown.markdown(input_file.read())
             soup = BeautifulSoup(content, "html.parser")
