@@ -408,7 +408,7 @@
   width: calc(100% - 2em);
   grid-template-rows: 7em auto;
   grid-template-columns: 2fr 3fr;
-  gap: 1em;
+  gap: 1rem;
   color: #fff;
 }
 #limitovana-nabidka > div {
@@ -430,7 +430,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
+}
+#limitovana-nabidka .sleva > * + * {
+  margin-top: 1rem;
 }
 #limitovana-nabidka .sleva .time {
   user-select: none;
@@ -439,18 +441,18 @@
   display: flex;
 }
 #limitovana-nabidka .sleva .time > .minutes::before {
-  content: "";
-  animation: time 3600s linear infinite;
+  content: ":" attr(data-value);
 }
 #limitovana-nabidka .sleva .time > .seconds::after {
-  content: "";
-  animation: time 60s linear infinite;
+  content: ":" attr(data-value);
 }
 #limitovana-nabidka .luzka {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1em;
+}
+#limitovana-nabidka .luzka > * + * {
+  margin-left: 1rem;
 }
 #limitovana-nabidka .luzka .kolac {
   min-width: 3em;

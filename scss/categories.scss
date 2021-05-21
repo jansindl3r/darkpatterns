@@ -236,7 +236,7 @@ $transition: .1s;
     width: calc(100% - 2em);
     grid-template-rows: 7em auto;
     grid-template-columns: 2fr 3fr;
-    gap: 1em;
+    gap: 1rem;
     color: #fff;
     > div {
         border-radius: 1em;
@@ -257,19 +257,21 @@ $transition: .1s;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: .5em;
+        & > * + * {
+            margin-top: 1rem;
+        }
         .time {
             user-select: none;
             font-size: 2em;
             font-variant-numeric: tabular-nums;
             display: flex;
             > .minutes::before {
-                content: "";
-                animation: time 60*60s linear infinite;
+                content: ":"attr(data-value);
+                // animation: time 60*60s linear infinite;
             }
             > .seconds::after {
-                content: "";
-                animation: time 60s linear infinite;
+                content: ":"attr(data-value);
+                // animation: time 60s linear infinite;
             }
         }
     }
@@ -277,7 +279,9 @@ $transition: .1s;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1em;
+        & > * + * {
+            margin-left: 1rem;
+        }
         .kolac {
             min-width: 3em;
             min-height: 3em;

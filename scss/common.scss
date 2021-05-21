@@ -69,13 +69,15 @@ nav {
     font-size: 1.3rem;
     display: flex;
     justify-content: center;
-    gap: 1rem;
     margin-top: 2.8em;
     padding-bottom:2.8em;
     top: .9rem;
     position: sticky;
     z-index: 10000;
     pointer-events: none;
+    > * + *{
+        margin-left: 1rem;
+    }
     a {
         pointer-events: all;
         color: inherit;
