@@ -238,6 +238,19 @@
         Právě si prohlíží 3,390 zákazníků
     </div>
 </div>
+
+<script>
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
+    const nabidka = document.getElementById("limitovana-nabidka")
+    const countDown = (el) => {
+        if (el.dataset.value == 0) {
+            el.dataset.value = 60
+        }
+        el.dataset.value = zeroPad((parseInt(el.dataset.value)-1), 2)
+    }
+    setInterval(()=>{countDown(nabidka.querySelector(".minutes"))}, 1000*60)
+    setInterval(()=>{countDown(nabidka.querySelector(".seconds"))}, 1000)
+</script>
                 </div>
             </div>
     </div> 
