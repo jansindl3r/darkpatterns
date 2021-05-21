@@ -1,4 +1,5 @@
 import re
+import json
 import markdown
 from pathlib import Path 
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
@@ -13,6 +14,8 @@ env.globals.update(zip=zip)
 
 
 def categories(path):
+    with open(base/"square_entries.json") as input_file:
+        square_entries = json.load(input_file)
     text_entries = list(path.glob("*.txt"))
     text_entries = sorted(text_entries, key=lambda x:int(x.name.split('_')[0]))
     context = {
@@ -41,7 +44,7 @@ def categories(path):
                 hint.decompose()
             else:
                 hint_content = None
-            context['entries'].append((soup.prettify(), illustration, illustration_type, hint_content))
+            context['entries'].append((soup.prettify(), illustration, illustration_type, hint_content, text_entry.stem in square_entries))
     
     with open(path/"text.md", "r") as input_file:
         context['content'] = markdown.markdown(input_file.read())    

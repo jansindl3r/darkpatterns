@@ -64,12 +64,11 @@ a {
 }
 
 nav {
+    flex-flow: row wrap;
     text-transform: uppercase;
     font-size: 1.3rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 100%;
     gap: 1rem;
     margin-top: 2.8em;
     padding-bottom:2.8em;
@@ -114,6 +113,12 @@ p {
     position: relative;
     max-width: 140ch;
     margin: 0 auto;
+    picture {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
 }
 
 .link {
@@ -181,6 +186,10 @@ p {
         justify-content: center;
         position: relative;
     }
+    .illustration.square {
+        width: 50%;
+        margin: 0 auto;
+    }
     .text {
         > * {
             max-width: 70ch;
@@ -213,8 +222,15 @@ p {
             overflow: hidden;
         }
     }
-    .hint > * {
-        padding-top: 1em;
+    .hint {
+        @media (hover:hover){
+            cursor: pointer;
+            &:hover {
+                > span:last-child {
+                    display: inline !important;
+                }
+            }
+        }
     }
 }
 
@@ -228,16 +244,12 @@ p {
     cursor: pointer;
     font-size: 1.5rem;
     border-radius: .5em;
+    margin: .3em .1em;
     padding: .45em .5em .35em;
     display: inline-block;
     transition: transform .1s ease-in-out;
 }
 
-p {
-    .button {
-        margin: 1em 0;
-    }
-}
 
 .checkbox {
     font-size: inherit;
@@ -278,8 +290,9 @@ p {
             }
         }
     }
-    
     &.rounded {
+        width: 1.7em;
+        height: 1.7em;
         span {
             border-radius: 100% !important;
             width: 1.7em;

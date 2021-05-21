@@ -71,51 +71,43 @@
             <div>
                 <div class="interactive-background illustration interactive">
                     <div id="svabi-motel">
-        <div>
-                <div  onclick="this.classList.add('show')">FAQ</div>
-                <div  onclick="this.classList.add('show')">Nastavení</div>
-                <div  onclick="this.classList.add('show')">Nápověda</div>
-                <div  class="way" onclick="correct(this)">Další</div>
-                <div  onclick="this.classList.add('show')">Změnit</div>
-        </div>
-        <div>
-                <div  onclick="this.classList.add('show')">Účet</div>
-                <div  class="way" onclick="correct(this)">Zavolat</div>
-                <div  onclick="this.classList.add('show')">Členství</div>
-                <div  onclick="this.classList.add('show')">Profil</div>
-                <div  onclick="this.classList.add('show')">Možnosti</div>
-        </div>
-        <div>
-                <div  onclick="this.classList.add('show')">Kontakty</div>
-                <div  onclick="this.classList.add('show')">Formulář</div>
-                <div  class="way" onclick="correct(this)">Poslat dopis</div>
-                <div  onclick="this.classList.add('show')">Pomoc</div>
-                <div  onclick="this.classList.add('show')">Infolinka</div>
-        </div>
-        <div>
-                <div  onclick="this.classList.add('show')">Vrátit zpět</div>
-                <div  onclick="this.classList.add('show')">Error</div>
-                <div  class="way" onclick="correct(this)">Účet byl zrušen</div>
-                <div  onclick="this.classList.add('show')">Nelze provést</div>
-                <div  onclick="this.classList.add('show')">Chyba systému</div>
-        </div>
+                <div class="active"  onclick="this.classList.add('wrong')" data-column-index="0">FAQ</div>
+                <div class="active"  onclick="this.classList.add('wrong')" data-column-index="0">Nastavení</div>
+                <div class="active"  onclick="this.classList.add('wrong')" data-column-index="0">Nápověda</div>
+                <div class="active"  onclick="correct(this)" data-column-index="0">Další</div>
+                <div class="active"  onclick="this.classList.add('wrong')" data-column-index="0">Změnit</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="1">Účet</div>
+                <div  onclick="correct(this)" data-column-index="1">Zavolat</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="1">Členství</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="1">Profil</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="1">Možnosti</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="2">Kontakty</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="2">Formulář</div>
+                <div  onclick="correct(this)" data-column-index="2">Poslat dopis</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="2">Pomoc</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="2">Infolinka</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="3">Vrátit zpět</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="3">Error</div>
+                <div  onclick="correct(this)" data-column-index="3">Účet byl zrušen</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="3">Nelze provést</div>
+                <div  onclick="this.classList.add('wrong')" data-column-index="3">Chyba systému</div>
 </div>
 
 <script>
     const correct = (el) => {
-        const nextElementSibling = el.parentNode.nextElementSibling
-        if (nextElementSibling) {
-           nextElementSibling.style.opacity = 1
-           el.parentNode.classList.add("freeze")
-        }
-        else {
-            el.parentNode.parentNode.classList.add("freeze")
-        }
         el.classList.add("correct")
+        const index = el.dataset.columnIndex
+        const cells = el.parentNode.children
+        for(let i=5+index*5; i<(10+index*5); ++i) {
+            if (index < 3) {
+                cells[i].classList.add("active")
+            }
+            cells[i-5].classList.remove("active")
+        }
     }    
 </script>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Klikáním se dostaň až ke zrušení účtu</span>
                     </small>
@@ -132,10 +124,10 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                <div class="interactive-background illustration interactive square">
                     
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Smaž aplikaci a sleduj změnu</span>
                     </small>
@@ -157,7 +149,6 @@
     <div id="row">
         <a class="btn active">1</a>
         <a class="btn">2</a>
-        <a class="btn">3</a>
     </div>
     <div id="content">
         <div id="image">image</div>
@@ -168,9 +159,6 @@
             <div class="hidden">
                 B
             </div>
-            <div class="hidden">
-                C
-            </div>
         </div>
         <input type="button" onclick="skrytePoplatky()" value="další">
     </div>
@@ -179,7 +167,7 @@
         const fields = document.querySelector("#skryte-poplatky>#content>#fields").children
         const input = document.querySelector("#skryte-poplatky>#content>input")
         const skrytePoplatky = () => {
-            for (let i=0; i < 3; i++) {
+            for (let i=0; i < 2; i++) {
                 if (fields[i].classList.contains('visible')) {
                     if (i == 1) {
                         input.value = "dokončit"
@@ -189,10 +177,10 @@
                     }
                     fields[i].classList.remove('visible')
                     fields[i].classList.add('hidden')
-                    fields[(i+1)%3].classList.remove("hidden")
-                    fields[(i+1)%3].classList.add("visible")
+                    fields[(i+1)%2].classList.remove("hidden")
+                    fields[(i+1)%2].classList.add("visible")
                     row[i].classList.remove("active")
-                    row[(i+1)%3].classList.add("active")
+                    row[(i+1)%2].classList.add("active")
                     break
                 }
             }
@@ -200,7 +188,7 @@
     </script>
 </div>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Klikni na zelené tlačítko a sleduj změnu ceny</span>
                     </small>
@@ -231,10 +219,26 @@
  Vizuální upozorňování na to, že „v nejbližší době“ dojde k vyprodání nabídky, vypršení času, což vytváří tlak na rychlé dokončení objednávky. Ukázkovými případy jsou upozornění na rezervačních stránkách (Booking.com, Hotel.com): zbývají poslední dva pokoje. Na stránce je simulace sociální aktivita imaginárních zákazníků k vytvoření pulsující nákupní horečky. Pokud je součástí časomíra, po jejím uběhnutí se nic nestane.
 </p>
         </div>
-            <div class="static-background illustration static">
-                <picture>
-                    <img src="data/KATEGORIE/5_Limitovana_nabidka.png" alt="Flowers">
-                </picture>
+            <div>
+                <div class="interactive-background illustration interactive">
+                    <div id="limitovana-nabidka">
+    <div class="sleva">
+        sleva vyprší za:
+        <div class="time">
+            <span>00</span>
+            <span class="minutes"></span>
+            <span class="seconds"></span>
+        </div>
+    </div>
+    <div class="luzka">
+        <div class="kolac"></div>
+        <div>Zbývají už jen 3 lůžka</div>
+    </div>
+    <div>
+        Právě si prohlíží 3,390 zákazníků
+    </div>
+</div>
+                </div>
             </div>
     </div> 
     <div class="category-entry">    
@@ -253,7 +257,7 @@
     <input onclick="{this.classList.add('clicked')}" type="button" class="bg-white" value="Klikni pro zrušení newsletteru">
 </div>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Klikni na tlačítko</span>
                     </small>
@@ -303,11 +307,41 @@
             <div>
                 <div class="interactive-background illustration interactive">
                     <div id="falesna-CTA-tlacitka">
-    <div>Vaše stahování bylo úspěšně zahájeno!</div>
-    <div onclick="{this.parentNode.classList.add('clicked')}">OK</div>
+    <div>
+            <!-- <div>a</div> -->
+            <div>
+                <img src="/assets/falesna_CTA_tlacitka/a.svg">
+            </div>
+            <!-- <div>b</div> -->
+            <div>
+                <img src="/assets/falesna_CTA_tlacitka/b.svg">
+            </div>
+            <!-- <div>c</div> -->
+            <div>
+                <img src="/assets/falesna_CTA_tlacitka/c.svg">
+            </div>
+            <!-- <div>d</div> -->
+            <div>
+                <img src="/assets/falesna_CTA_tlacitka/d.svg">
+            </div>
+            <!-- <div>e</div> -->
+            <div>
+                <img src="/assets/falesna_CTA_tlacitka/e.svg">
+            </div>
+            <!-- <div>f</div> -->
+            <div>
+                <img src="/assets/falesna_CTA_tlacitka/f.svg">
+            </div>
+            <!-- <div>g</div> -->
+            <div>
+                <img src="/assets/falesna_CTA_tlacitka/g.svg">
+            </div>
+    </div>
+    <!-- <div>Vaše stahování bylo úspěšně zahájeno!</div>
+    <div onclick="{this.parentNode.classList.add('clicked')}">OK</div> -->
 </div>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Klikni na to PRAVÉ tlačítko</span>
                     </small>
@@ -327,28 +361,42 @@
                 <div class="interactive-background illustration interactive">
                     <div id="falesna-volitelna-tlacitka">
     <div>
-        <label class="checkbox"><input type="checkbox"><span></span></label>
-        <div>Nechci obdržet telefonát</div>
-        <label class="checkbox rounded"><input type="checkbox"><span></span></label>
-    </div>
-    <div>
-        <label class="checkbox"><input type="checkbox"><span></span></label>
-        <div>Nechci obdržet mail</div>
-        <label class="checkbox rounded"><input type="checkbox"><span></span></label>
-    </div>
-    <div>
-        <label class="checkbox"><input type="checkbox"><span></span></label>
-        <div>Nechci obdržet dopis</div>
-        <label class="checkbox rounded"><input type="checkbox"><span></span></label>
-    </div>
-    <div>
-        <label class="checkbox"><input type="checkbox"><span></span></label>
-        <div>Nechci obdržet SMS</div>
-        <label class="checkbox rounded"><input type="checkbox"><span></span></label>
+        <div>
+            <label class="checkbox"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet telefonát</span>
+        </div>
+        <div>
+            <label class="checkbox rounded"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet telefonát</span>
+        </div>
+        <div>
+            <label class="checkbox"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet mail</span>
+        </div>
+        <div>
+            <label class="checkbox rounded"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet mail</span>
+        </div>
+        <div>
+            <label class="checkbox"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet dopis</span>
+        </div>
+        <div>
+            <label class="checkbox rounded"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet dopis</span>
+        </div>
+        <div>
+            <label class="checkbox"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet SMS</span>
+        </div>
+        <div>
+            <label class="checkbox rounded"><input type="checkbox"><span></span></label>
+            <span>Nechci obdržet SMS</span>
+        </div>
     </div>
 </div>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Vyzkoušej si falešná přepínací tlačítka</span>
                     </small>
@@ -457,6 +505,7 @@
             <div>
                 <div class="interactive-background illustration interactive">
                     <div id="nucene-scrollovani">
+    <div>Pro dokončení objednávky scrolluj na konec stránky</div>
     <div></div>
     <div></div>
     <div></div>
@@ -496,9 +545,10 @@
     <div></div>
     <div></div>
     <div></div>
+    <div>Právě jste dokončili objednávku</div>
 </div>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Scrolluj co to dá</span>
                     </small>
@@ -570,7 +620,7 @@
     }
 </script>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Lupa ti pomůže přečíst nápis</span>
                     </small>
@@ -611,7 +661,7 @@
     </span>
 </div>
                 </div>
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">Kliknout, či nekliknout?</span>
                     </small>
@@ -654,11 +704,14 @@
                     <div class="link" id="uzitecne-odkazy">
                     </div>
                 <h1>Užitečné odkazy</h1>
-<p>http://www.bezpecnyinternet.cz/
-https://www.coi.cz/pro-spotrebitele/rizikove-e-shopy/ https://www.hoax.cz/hoax/aktuality/
-https://webtransparency.cs.princeton.edu/dark-patterns/#revisions
-https://www.nytimes.com/interactive/2015/12/04/business/media/bad-ads-list.html?mtrref=www.nytimes.com&amp;assetType=REGIWALL
-https://www.ghostery.com/ https://www.reddit.com/r/assholedesign/</p>
+<p><a href="http://www.bezpecnyinternet.cz/" class="button" target="_blank">Bezpečný internet (CZ)</a>
+<a href="https://www.coi.cz/pro-spotrebitele/rizikove-e-shopy/" class="button" target="_blank">Rizikové e-shopy (CZ)</a>
+<a href="https://www.kanarci.online/" class="button" target="_blank">podcast Kanárci v síti (CZ)</a>
+<a href="https://www.hoax.cz/hoax/aktuality/" class="button" target="_blank">Aktuality ze světa hoaxů (CZ)</a>
+<a href="https://webtransparency.cs.princeton.edu/dark-patterns/#revisions" class="button" target="_blank">výzkum Dark Patterns (ENG</a>
+<a href="https://www.nytimes.com/interactive/2015/12/04/business/media/bad-ads-list.html?mtrref=www.nytimes.com&assetType=REGIWALL" class="button" target="_blank">Bad ads NY Times (ENG)</a>
+<a href="https://www.ghostery.com/" class="button" target="_blank">blokování reklam Ghostery (ENG)</a>
+<a href="https://www.reddit.com/r/assholedesign/" class="button" target="_blank">zkušenosti lidí Asshole design (ENG)</a></p>
             </div>
             <div class="divider">
             </div>

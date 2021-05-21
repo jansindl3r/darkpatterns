@@ -2,24 +2,24 @@
    {{content}}
 </div>
 
-{% for text_entry, illustration, illustration_type, hint_content in entries %}
+{% for text_entry, illustration, illustration_type, hint_content, square in entries %}
     <div class="category-entry">    
         <div class="text">
             {{text_entry}}
         </div>
         {% if illustration_type == "image" %}
-            <div class="static-background illustration static">
+            <div class="static-background illustration static{% if square%} square{%endif%}">
                 <picture>
                     <img src="{{illustration}}" alt="Flowers">
                 </picture>
             </div>
         {% else %}
             <div>
-                <div class="interactive-background illustration interactive">
+                <div class="interactive-background illustration interactive{% if square%} square{%endif%}">
                     {{illustration|safe}}
                 </div>
                 {% if hint_content %}
-                    <small class="hint" onclick="{this.children[0].style.display = 'none', this.children[1].style.display = 'block'}">
+                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
                         <span class="pointer">...</span>
                         <span style="display: None;">{{hint_content}}</span>
                     </small>

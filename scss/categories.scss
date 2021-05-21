@@ -1,4 +1,4 @@
-$positive: rgb(0, 224, 0);
+@import "mixins";
 $transition: .1s;
 
 #skryte-poplatky {
@@ -56,43 +56,43 @@ $transition: .1s;
 }
 
 #svabi-motel {
-    gap: .5em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    &.freeze, .freeze {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(5, 1fr);
+    font-size: 1rem;
+    gap: .5em .5em;
+    width: calc(100% - 2em);
+    height: calc(100% - 2em);
+    > * {
+        opacity: 0.5;
+        user-select: none;
+        pointer-events: all;
+        cursor: pointer;
+        padding: .5em;
+        background:white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: .5em;
+        break-after: always;
+        color: #fff;
+        transition: background .1s ease-in;
+        &.correct {
+            background: $positive;
+            opacity: 1;
+            animation: correct .5s ease-in;
+        }
+        &.wrong {
+            background: $negative;
+        }
         pointer-events: none;
     }
-    >*{
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        gap: .5em;
-        text-align: center;
-        >* {
-            background: #fff;
-            padding: .2em;
-            border-radius: .2em;
-            user-select: none;
-            color: transparent;
-            &:not(.way):active {
-                background-color: red;
-            }
-            &.show {
-                opacity: 1 !important;
-                color: black;
-            }
-            &.correct {
-                background-color: green;
-                color: black
-            }
-
-        }
+    *.active{
+        pointer-events: all;
+        opacity: 1;
     }
-    >*:not(:nth-child(1)) {
-        opacity: 0;
-    }
-
 }
 
 .bg-white {
@@ -113,7 +113,7 @@ $transition: .1s;
         align-items: center;
         justify-content: center;
         overflow-x: hidden;
-        &::after {
+        &:not(:first-child):not(:last-child)::after {
             content: "Reklama";
             font-size: 6rem;
             position: absolute;
@@ -136,30 +136,159 @@ $transition: .1s;
     }
 }
 
+@keyframes falesna-CTA-tlacitka-jump {
+    from {
+        margin-top: .5em;
+        margin-bottom: -.5em;
+    }
+    
+    to {
+        margin-top: -.5em;
+        margin-bottom: .5em;
+    }
+}
+
+@keyframes falesna-CTA-tlacitka-squeeze {
+    from {
+        @include transform(scale(1, 1));
+    }
+    
+    to {
+        @include transform(scale(.8, .8));
+    }
+}
+
 #falesna-CTA-tlacitka {
-    > * {
-        background: white;
-        margin: 2px;
-        padding: 2em;
-        &:first-child {
-            border-radius: 1em 1em 0 0;
+    height: auto;
+    width: calc(100% - 2em) ;
+    > div {
+        display: grid;
+        grid-template-areas: 
+        "a a b b b"
+        "c c c d d"
+        "e e f d d"
+        "e e g g g";
+        grid-template-columns: repeat(5, 1fr);
+        $letters: a, b, c, d, e, f, g;
+        @for $i from 1 through length($letters) {
+            $letter: nth($letters, $i);
+            > *:nth-child(#{$i}) {
+                grid-area: $letter;
+            }
         }
-        &:last-child {
-            padding-top: 1em;
-            padding-bottom: 1em;
-            border-radius:  0 0 1em 1em;
-            &:hover {
-                background: $positive;
-                cursor: pointer;
+        > * {
+            box-sizing: content-box !important;
+            height: auto;
+        }
+        > * > img {
+            width: 100%;
+            pointer-events: none;
+        }
+        > *:nth-child(2), *:nth-child(6) {
+            > img {
+                transition: all .2s ease-in-out;
+            }
+            &:hover > img  { 
+                    transform: rotate(180deg);
+                    transform-origin: 50% 50%;
+                }
+            }
+        > *:nth-child(3), >*:nth-child(7) {
+            // position: absolute;
+            animation: "falesna-CTA-tlacitka-jump" .3s ease-in-out alternate infinite;
+        }
+        >*:nth-child(3) {
+            animation-direction: alternate-reverse !important;
+        }
+        >*:nth-child(4), >*:nth-child(5) {
+            animation: "falesna-CTA-tlacitka-squeeze" .5s ease-in-out alternate infinite;
+        }
+        
+    }
+}
+
+@keyframes time {
+    @for $i from 0 through 59 {
+        #{($i/59)*100%} {
+            content: ":#{zerofill(59-$i)}";
+        }
+    }
+}
+
+@keyframes opacity-anim {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#limitovana-nabidka {
+    font-size: 1rem;
+    display: grid;
+    grid-template-areas:
+    "a b"
+    "c c"
+    ;
+    // height: calc(100% - 2em);
+    user-select: none;
+    width: calc(100% - 2em);
+    grid-template-rows: 7em auto;
+    grid-template-columns: 2fr 3fr;
+    gap: 1em;
+    color: #fff;
+    > div {
+        border-radius: 1em;
+        border: 2px solid #fff;
+        padding: 1em;
+    }
+    & > div:nth-child(1) {
+        grid-area: a;
+    }
+    & > div:nth-child(2) {
+        grid-area: b;
+    }
+    & > div:nth-child(3) {
+        grid-area: c;
+    }
+    .sleva {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: .5em;
+        .time {
+            user-select: none;
+            font-size: 2em;
+            font-variant-numeric: tabular-nums;
+            display: flex;
+            > .minutes::before {
+                content: "";
+                animation: time 60*60s linear infinite;
+            }
+            > .seconds::after {
+                content: "";
+                animation: time 60s linear infinite;
             }
         }
     }
-    text-align: center;
-    transition: opacity $transition ease-in;
-    &.clicked {
-        opacity: 0;
-        cursor: default;
-        pointer-events: none;
+    .luzka {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        .kolac {
+            min-width: 3em;
+            min-height: 3em;
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 100%;
+        }
+        * {
+            animation: .5s opacity-anim ease-in-out alternate-reverse infinite;
+
+        }
     }
 }
 
@@ -204,14 +333,17 @@ $transition: .1s;
 
 
 #falesna-volitelna-tlacitka {
+    font-size: 1rem;
     > div {
         display: grid;
-        grid-template-columns: auto 1fr auto;
-        grid-auto-flow: column;
-        text-align: center;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5em 2em;
         margin: .75em 0;
+        > div {
+            display: flex;
+            align-items: center;
+        }
     }
-    
 }
 
 #dvojity-negativ {
@@ -242,6 +374,7 @@ $transition: .1s;
     overflow: hidden;
     #small {
         font-size: .5em;
+        opacity: 0.2;
     }
     #magnifier {
         font-size: 4.5em;

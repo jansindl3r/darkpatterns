@@ -2,6 +2,18 @@
 @use 'sass:math';
 @use 'sass:list';
 
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -moz-transform: $property;
+    -ms-transform: $property;
+    -o-transform: $property;
+    transform: $property;
+  }
+
+@function zerofill($i) {
+    @return #{str-slice("0000",0,2 - str-length(#{$i}))}+$i; 
+}
+
 @function pow($number, $exponent) {
     $value: 1;
   
@@ -65,6 +77,10 @@
         zip($colors, $steps)
     );
 }
+
+$positive: rgba(0, 231, 112, 1);
+$negative: rgba(255, 43, 6, 1);
+
 
 // body {
 //     @include smooth-opacity-gradient(red, 5);
