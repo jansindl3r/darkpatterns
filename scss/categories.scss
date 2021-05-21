@@ -160,7 +160,7 @@ $transition: .1s;
 
 #falesna-CTA-tlacitka {
     height: auto;
-    width: calc(100% - 2em) ;
+    width: calc(100% - 2em);
     > div {
         display: grid;
         grid-template-areas: 
@@ -204,14 +204,6 @@ $transition: .1s;
             animation: "falesna-CTA-tlacitka-squeeze" .5s ease-in-out alternate infinite;
         }
         
-    }
-}
-
-@keyframes time {
-    @for $i from 0 through 59 {
-        #{($i/59)*100%} {
-            content: ":#{zerofill(59-$i)}";
-        }
     }
 }
 

@@ -30,10 +30,15 @@ def categories(path):
             if (path/text_entry.stem/"file.html").exists():
                 with open(path/text_entry.stem/"file.html", "r") as input_file:
                     illustration = env.from_string(input_file.read()).render()
-                    illustration_type = "html"
+                illustration_type = "html"
+                interactive = True
             else:
+                interactive = False
                 illustration = str(illustration)
-                
+        
+        if text_entry.stem in ["5_Limitovana_nabidka"]:
+            interactive = False
+            
         with open(text_entry) as input_file:
             content = markdown.markdown(input_file.read())
             soup = BeautifulSoup(content, "html.parser")
@@ -44,7 +49,7 @@ def categories(path):
                 hint.decompose()
             else:
                 hint_content = None
-            context['entries'].append((soup.prettify(), illustration, illustration_type, hint_content, text_entry.stem in square_entries))
+            context['entries'].append((soup.prettify(), illustration, illustration_type, hint_content, text_entry.stem in square_entries, interactive))
     
     with open(path/"text.md", "r") as input_file:
         context['content'] = markdown.markdown(input_file.read())    

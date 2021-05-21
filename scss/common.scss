@@ -202,26 +202,33 @@ p {
             height: 100%;
         }
     }
+
+    
+
     .illustration {
         align-items: center;
 
         picture {
             max-height: 20em;
             width: 100%;
-            text-align: center;               
-            img {
-            }
+            text-align: center;
         }
 
-        &.interactive {
-            background: $static-pic-background;
+        &.html {
             font-size: 1.25rem;
             height: 100%;
         }
-
+        
+        &.image {
+            overflow: hidden;
+        }
+        
+        &.interactive {
+            background: $static-pic-background;
+        }
+        
         &.static {
             background: orange;
-            overflow: hidden;
         }
     }
     .hint {

@@ -235,14 +235,18 @@ p .button {
   width: 100%;
   text-align: center;
 }
-.category-entry .illustration.interactive {
-  background: #0092fc;
+.category-entry .illustration.html {
   font-size: 1.25rem;
   height: 100%;
 }
+.category-entry .illustration.image {
+  overflow: hidden;
+}
+.category-entry .illustration.interactive {
+  background: #0092fc;
+}
 .category-entry .illustration.static {
   background: orange;
-  overflow: hidden;
 }
 @media (hover: hover) {
   .category-entry .hint {

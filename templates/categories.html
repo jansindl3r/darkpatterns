@@ -2,20 +2,21 @@
    {{content}}
 </div>
 
-{% for text_entry, illustration, illustration_type, hint_content, square in entries %}
+{% for text_entry, illustration, illustration_type, hint_content, square, interactive in entries %}
     <div class="category-entry">    
         <div class="text">
             {{text_entry}}
         </div>
         {% if illustration_type == "image" %}
-            <div class="static-background illustration static{% if square%} square{%endif%}">
+            <div class="illustration static{% if square%} square{%endif%} image">
                 <picture>
                     <img src="{{illustration}}" alt="Flowers">
                 </picture>
             </div>
         {% else %}
             <div>
-                <div class="interactive-background illustration interactive{% if square%} square{%endif%}">
+                {{interactive}}
+                <div class="illustration {% if interactive %}interactive {% else %}static {% endif %}{% if square%} square{%endif%} html">
                     {{illustration|safe}}
                 </div>
                 {% if hint_content %}

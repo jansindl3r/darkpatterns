@@ -3,8 +3,8 @@
         <span>sleva vyprší za:</span>
         <div class="time">
             <span>00</span>
-            <span class="minutes" data-value="59"></span>
-            <span class="seconds" data-value="59"></span>
+            <span class="minutes" data-value="30"></span>
+            <span class="seconds" data-value="00"></span>
         </div>
     </div>
     <div class="luzka">
@@ -19,12 +19,13 @@
 <script>
     const zeroPad = (num, places) => String(num).padStart(places, '0')
     const nabidka = document.getElementById("limitovana-nabidka")
-    const countDown = (el) => {
-        if (el.dataset.value == 0) {
-            el.dataset.value = 60
+    const seconds = nabidka.querySelector(".seconds")
+    const minutes = nabidka.querySelector(".minutes")
+    setInterval(()=>{
+        if (seconds.dataset.value == 0) {
+            seconds.dataset.value = 60
+            minutes.dataset.value = zeroPad((parseInt(minutes.dataset.value)-1), 2)
         }
-        el.dataset.value = zeroPad((parseInt(el.dataset.value)-1), 2)
-    }
-    setInterval(()=>{countDown(nabidka.querySelector(".minutes"))}, 1000*60)
-    setInterval(()=>{countDown(nabidka.querySelector(".seconds"))}, 1000)
+        seconds.dataset.value = zeroPad((parseInt(seconds.dataset.value)-1), 2)
+    }, 1000)
 </script>

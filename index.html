@@ -69,7 +69,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="svabi-motel">
                 <div class="active"  onclick="this.classList.add('wrong')" data-column-index="0">FAQ</div>
                 <div class="active"  onclick="this.classList.add('wrong')" data-column-index="0">Nastavení</div>
@@ -124,7 +125,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive square">
+                True
+                <div class="illustration interactive  square html">
                     
                 </div>
                     <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
@@ -144,7 +146,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="skryte-poplatky">
     <div id="row">
         <a class="btn active">1</a>
@@ -203,7 +206,7 @@
  Účtování poplatků uživatelům pod záminkou jednorázového poplatku nebo bezplatné zkušební verze. Příkladem je registrace pro Netflix, kdy je použitý výrazný vizuální apel (barevný CTA button) k informování o účtování poplatků až po ukončení volného měsíce, zatímco doplňující informace o nepřerušených platbách jsou umístěné ve spodní části stránky malým a nevýrazným písmem.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/4_Skryte_predplatne.png" alt="Flowers">
                 </picture>
@@ -220,14 +223,15 @@
 </p>
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                False
+                <div class="illustration static  html">
                     <div id="limitovana-nabidka">
     <div class="sleva">
         <span>sleva vyprší za:</span>
         <div class="time">
             <span>00</span>
-            <span class="minutes" data-value="59"></span>
-            <span class="seconds" data-value="59"></span>
+            <span class="minutes" data-value="30"></span>
+            <span class="seconds" data-value="00"></span>
         </div>
     </div>
     <div class="luzka">
@@ -242,14 +246,15 @@
 <script>
     const zeroPad = (num, places) => String(num).padStart(places, '0')
     const nabidka = document.getElementById("limitovana-nabidka")
-    const countDown = (el) => {
-        if (el.dataset.value == 0) {
-            el.dataset.value = 60
+    const seconds = nabidka.querySelector(".seconds")
+    const minutes = nabidka.querySelector(".minutes")
+    setInterval(()=>{
+        if (seconds.dataset.value == 0) {
+            seconds.dataset.value = 60
+            minutes.dataset.value = zeroPad((parseInt(minutes.dataset.value)-1), 2)
         }
-        el.dataset.value = zeroPad((parseInt(el.dataset.value)-1), 2)
-    }
-    setInterval(()=>{countDown(nabidka.querySelector(".minutes"))}, 1000*60)
-    setInterval(()=>{countDown(nabidka.querySelector(".seconds"))}, 1000)
+        seconds.dataset.value = zeroPad((parseInt(seconds.dataset.value)-1), 2)
+    }, 1000)
 </script>
                 </div>
             </div>
@@ -265,7 +270,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="confirmshaming">
     <input onclick="{this.classList.add('clicked')}" type="button" class="bg-white" value="Klikni pro zrušení newsletteru">
 </div>
@@ -285,7 +291,7 @@
  Uživatel musí provést přihlášení, nebo si vytvořit nový účet (a tedy sdílet informace o jeho profilu), jen aby mohl navštívit webovou stránku. Některé soubory cookies fungují tak, že i v případě neodsouhlasení, nebo použití adblocku, nám neumožní na stránku vůbec vstoupit.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/7_Nutnost_prihlaseni.png" alt="Flowers">
                 </picture>
@@ -300,7 +306,7 @@
  Ohlasy na stránce produktu jsou formulovány roboty, případně generovány tak, aby hodnotily produkt co nejvyšším počtem kladných hodnocení pod záminkou promování produktu. Dalším krokem je pak tzv. Blemishing effect (Pošpiňující efekt), který zobrazuje několik negativních recenzí (může jít i o reálné recenze, ale umístěné na správné místo), které chytře podpoří prodej vybraných produktů.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/8_Falesne_recenze.png" alt="Flowers">
                 </picture>
@@ -318,7 +324,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="falesna-CTA-tlacitka">
     <div>
             <!-- <div>a</div> -->
@@ -371,7 +378,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="falesna-volitelna-tlacitka">
     <div>
         <div>
@@ -424,7 +432,7 @@
  ‚Clickbait‘ metody tvářící se jako reálná a významná zpráva s vizualitou relevantního zdroje (BBC, ČT atp.). Cílem je odvést naší pozornost a v zájmu zjištění bližších informací se dostat na reklamní stránku, kterou jsme navštívit neplánovali.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/11_Falesne_titulky.png" alt="Flowers">
                 </picture>
@@ -439,7 +447,7 @@
  Součástí „clickbait“ metody se na stránce zobrazují vyskakující falešné notifikace, simulující příchozí zprávu, mail, nebo upozornění ze sociálních sítí atp. Po jejich otevření jste přesměrováni na reklamní stránku.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/12_Falesne_notifikace.png" alt="Flowers">
                 </picture>
@@ -454,7 +462,7 @@
  Paradoxním příkladem jsou antiviry, které po nainstalování přenesou vir (např.: malware/adware MacKeeper, nebo příliš agresivně se chovající Windowsovský antivir Avast s automatickou volbou primárního antiviru bez uživatelského souhlasu).
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/13_Falesny_antivir.png" alt="Flowers">
                 </picture>
@@ -469,7 +477,7 @@
  Okna s upozorněním, která nenabízejí leave button — všechny možnosti vedou k potvrzení akce. Např.: uživatel Instagramu je pod tlakem, aby si zapnul oznámení, ovšem s možnostmi „Not now“ a „OK“. Spotify app nabízí pouze „Not now“. Možnost „Cancel“ není k dispozici a aplikace mu bude nadále nabízet upozornění, dokud potvrzení nepodlehne.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/14_Zadne_zpet.png" alt="Flowers">
                 </picture>
@@ -484,7 +492,7 @@
  Metoda, která ve formě adware/malware vyskakovacích oken nutí návštěvníka po kliknutí kamkoliv (zavřít, potvrdit, plocha reklamy) nalákat na reklamní sdělení. Klasickým příkladem, který už je spíše na ústupu (je už příliš rozeznatelný), je oznámení o výběru vaší IP adresy a získání odměny v podobě nového telefonu, sluchátek atp.).
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/15_Hard click.png" alt="Flowers">
                 </picture>
@@ -499,7 +507,7 @@
  Bílá plocha jako „prázdné místo“ v online nákupním košíku chytře upozorňuje na nutnost „zaplnit“ košík dalšími položkami (např. Amazon). Ze stejného důvodu se například zvětšují nákupní vozíky v obchodech.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/16_Prazdny_kosik.png" alt="Flowers">
                 </picture>
@@ -516,7 +524,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="nucene-scrollovani">
     <div>Pro dokončení objednávky scrolluj na konec stránky</div>
     <div></div>
@@ -576,7 +585,7 @@
  Metoda clickbaitu pro dotykové obrazovky. Součástí reklamy je umělé smítko nebo vlas, které v momentě smetení nechtěně provede klik a otevře reklamu.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/18_Nuceny_swipe.png" alt="Flowers">
                 </picture>
@@ -591,7 +600,7 @@
  Gamifikace je technika marketingu, která za pomoci herních mechanismů, designu a myšlení v neherním prostředí zvyšuje zájem, loajalitu a nadšení uživatelů. Jedná se o zábavnou metodu, která však může obsahovat jiné manipulativní prvky, na které je vhodné dát si pozor (skryté poplatky, či falešná CTA tlačítka).
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/19_Gamification.png" alt="Flowers">
                 </picture>
@@ -608,7 +617,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="neviditelne-pismo">
     <div id="small"><div>PODMÍNKY:</div></div>
     <div id="magnifier" style="display: none;"><div><div>PODMÍNKY:</div></div></div>
@@ -648,7 +658,7 @@
  Navržené prostředí interface (to co na webu vidíme a na co klikáme), může být záměrně navrženo s manipulovatelným záměrem. Tlačítka na dotykových obrazovkách jsou miniaturní a bez prostoru kolem a návštěvníci mohou snadno kliknout na nabízenou reklamu. Příkladem je Exit full screen mode button na Youtube při přehrávání, který je malý a přímo hraničí s tlačítkem nabízeného dalšího videa, případně reklamního videa, na které spíš nechtěně kliknu.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/21_Manipulativni UI.png" alt="Flowers">
                 </picture>
@@ -665,7 +675,8 @@
 
         </div>
             <div>
-                <div class="interactive-background illustration interactive">
+                True
+                <div class="illustration interactive  html">
                     <div id="dvojity-negativ">
     <span>
         <label class="checkbox"><input type="checkbox"><span></span></label>
@@ -689,7 +700,7 @@
  Součástí textu jsou jiná nesouvisející slova, která podvědomě vnímáme jako součást hlavního textu. Slova jako „Zdarma“ nebo „0 Kč“ nás pak ovlivní v pocitu nižší ceny a lákavější nabídky.
 </p>
         </div>
-            <div class="static-background illustration static">
+            <div class="illustration static image">
                 <picture>
                     <img src="data/KATEGORIE/23_Pridruzena_slova.png" alt="Flowers">
                 </picture>
