@@ -294,14 +294,6 @@ $transition: .1s;
     }
     & > div:nth-child(1) {
         grid-area: a;
-    }
-    & > div:nth-child(2) {
-        grid-area: b;
-    }
-    & > div:nth-child(3) {
-        grid-area: c;
-    }
-    .sleva {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -322,7 +314,8 @@ $transition: .1s;
             }
         }
     }
-    .luzka {
+    & > div:nth-child(2) {
+        grid-area: b;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -350,6 +343,14 @@ $transition: .1s;
         * {
             animation: .5s opacity-anim ease-in-out alternate-reverse infinite;
 
+        }
+    }
+    & > div:nth-child(3) {
+        grid-area: c;
+        display: flex;
+        align-items: center;
+        & > * + * {
+            margin-left: .5em;
         }
     }
 }

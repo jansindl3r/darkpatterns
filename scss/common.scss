@@ -114,6 +114,34 @@ p {
     top: -9rem;
 }
 
+.profile {
+    height: 2em;
+    width: 2em;
+    display: inline-block;
+    position: relative;
+
+    &::before, &::after {
+        background: #000;
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        height: 40%;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        border-radius: .8em .8em .2em .2em;
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        height: 50%;
+        width: 50%;
+        border-radius: 100%;
+        left: 25%;
+        top: 0;
+    }
+}
 
 
 article > .divider {

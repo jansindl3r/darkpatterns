@@ -283,43 +283,36 @@
 }
 #limitovana-nabidka > div:nth-child(1) {
   grid-area: a;
-}
-#limitovana-nabidka > div:nth-child(2) {
-  grid-area: b;
-}
-#limitovana-nabidka > div:nth-child(3) {
-  grid-area: c;
-}
-#limitovana-nabidka .sleva {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-#limitovana-nabidka .sleva > * + * {
+#limitovana-nabidka > div:nth-child(1) > * + * {
   margin-top: 1rem;
 }
-#limitovana-nabidka .sleva .time {
+#limitovana-nabidka > div:nth-child(1) .time {
   user-select: none;
   font-size: 2em;
   font-variant-numeric: tabular-nums;
   display: flex;
 }
-#limitovana-nabidka .sleva .time > .minutes::before {
+#limitovana-nabidka > div:nth-child(1) .time > .minutes::before {
   content: ":" attr(data-value);
 }
-#limitovana-nabidka .sleva .time > .seconds::after {
+#limitovana-nabidka > div:nth-child(1) .time > .seconds::after {
   content: ":" attr(data-value);
 }
-#limitovana-nabidka .luzka {
+#limitovana-nabidka > div:nth-child(2) {
+  grid-area: b;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#limitovana-nabidka .luzka > * + * {
+#limitovana-nabidka > div:nth-child(2) > * + * {
   margin-left: 1rem;
 }
-#limitovana-nabidka .luzka .kolac {
+#limitovana-nabidka > div:nth-child(2) .kolac {
   min-width: 3em;
   min-height: 3em;
   background: transparent;
@@ -328,7 +321,7 @@
   position: relative;
   overflow: hidden;
 }
-#limitovana-nabidka .luzka .kolac::after {
+#limitovana-nabidka > div:nth-child(2) .kolac::after {
   content: "";
   width: 50%;
   height: 50%;
@@ -337,8 +330,16 @@
   position: absolute;
   background: #000;
 }
-#limitovana-nabidka .luzka * {
+#limitovana-nabidka > div:nth-child(2) * {
   animation: 0.5s opacity-anim ease-in-out alternate-reverse infinite;
+}
+#limitovana-nabidka > div:nth-child(3) {
+  grid-area: c;
+  display: flex;
+  align-items: center;
+}
+#limitovana-nabidka > div:nth-child(3) > * + * {
+  margin-left: 0.5em;
 }
 
 #privacy-zuckering #icon {
