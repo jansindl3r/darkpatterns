@@ -19,6 +19,9 @@
         el.classList.add("correct")
         const index = el.dataset.columnIndex
         const cells = el.parentNode.children
+        if (index == 3) {
+            el.parentNode.classList.add("done")
+        }
         for(let i=5+index*5; i<(10+index*5); ++i) {
             if (index < 3) {
                 cells[i].classList.add("active")

@@ -15,7 +15,6 @@
             </div>
         {% else %}
             <div>
-                {{interactive}}
                 <div class="illustration {% if interactive %}interactive {% else %}static {% endif %}{% if square%} square{%endif%} html">
                     {{illustration|safe}}
                 </div>

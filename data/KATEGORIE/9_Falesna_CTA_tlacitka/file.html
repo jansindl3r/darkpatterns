@@ -1,12 +1,28 @@
 <div id="falesna-CTA-tlacitka">
-    <div>
+    <div id="buttons">
         {% for letter in "abcdefg" %}
             <!-- <div>{{letter}}</div> -->
-            <div>
+            <div onclick="{% if letter == 'a' %}ctaCorrect(){% else %}ctaFalse(){% endif %}">
                 <img src="assets/falesna_CTA_tlacitka/{{letter}}.svg">
             </div>
         {% endfor %}
     </div>
-    <!-- <div>Vaše stahování bylo úspěšně zahájeno!</div>
-    <div onclick="{this.parentNode.classList.add('clicked')}">OK</div> -->
+    <div id="ctaMessage">
+        <div name="correct">Vaše stahování bylo úspěšně zahájeno!</div>
+        <div name="false">Špatné tlačítko...</div>
+        <div onclick="this.parentNode.style=''; this.parentNode.parentNode.className=''">OK</div>
+    </div>
+    <script>
+        const cta = document.getElementById("ctaMessage")
+        const ctaCorrect = () => {
+            cta.parentNode.className = "blur"
+            cta.style.display = "flex"
+            cta.dataset.meaning = "correct"
+        }
+        const ctaFalse = () => {
+            cta.parentNode.className = "blur"
+            cta.style.display = "flex"
+            cta.dataset.meaning = "false"
+        }
+    </script>
 </div>

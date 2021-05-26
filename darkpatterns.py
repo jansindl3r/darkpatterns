@@ -90,5 +90,5 @@ template = env.get_template('main.html')
 
 
 with open("index.html", "w+") as output_file:
-    output_file.write(template.render(**context))
+    output_file.write(BeautifulSoup(template.render(**context), 'html.parser').prettify())
         
