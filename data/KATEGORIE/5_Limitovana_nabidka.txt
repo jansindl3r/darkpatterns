@@ -1,2 +1,0 @@
-Limitovaná nabídka 
-(sociální tlak)Vizuální upozorňování na to, že „v nejbližší době“ dojde k vyprodání nabídky, vypršení času, což vytváří tlak na rychlé dokončení objednávky. Ukázkovými případy jsou upozornění na rezervačních stránkách (Booking.com, Hotel.com): zbývají poslední dva pokoje. Na stránce je simulace sociální aktivita imaginárních zákazníků k vytvoření pulsující nákupní horečky. Pokud je součástí časomíra, po jejím uběhnutí se nic nestane.

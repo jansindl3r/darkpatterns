@@ -1,3 +1,0 @@
-Nucené scrollováníNávštěvník je donucen scrollovat napříč desítkami produktů, než se dostane k místu, které potřebuje. (např. portál Megaknihy.cz vás v posledním kroku internetové objednávky donutí prohlédnout a scrollovat napříč obrovským množstvím produktů, abyste až na úplném konci mohli potvrdit objednávku).
-
-(Hint: Scrolluj co to dá)

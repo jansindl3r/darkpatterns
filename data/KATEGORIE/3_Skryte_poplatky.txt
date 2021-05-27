@@ -1,3 +1,0 @@
-Skryté poplatkyObvykle tato situace nastane při on-line nakupování. V posledním kroku zjistíte, že vám jsou naúčtovány nečekané poplatky (např. poplatky za zařízení objednávky, za rezervaci), které nebyly v předchozích krocích zmíněny. 
-
-(hint: Klikni na zelené tlačítko a sleduj změnu ceny)

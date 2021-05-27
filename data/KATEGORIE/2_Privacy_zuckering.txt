@@ -1,3 +1,0 @@
-Privacy ZuckeringJde o manipulaci k veřejnému sdílení mnohem více osobních informací, než jsme skutečně zamýšleli (pojmenováno podle gen. ředitele Facebooku Marka Zuckerberga). Příkladem je situace odstranění aplikace, kdy se zobrazí upozornění, že aplikace sice odstraní všechna data ze zařízení, avšak v cloudu data zůstanou.
-
-(hint: Smaž aplikaci a sleduj změnu)

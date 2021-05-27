@@ -1,14 +1,44 @@
 #skryte-poplatky {
+  display: grid;
+  grid-template-columns: 1fr 2ch 1fr 2ch 1.5fr;
+  padding: 2em;
+  gap: 0.5em;
+  align-items: center;
+}
+#skryte-poplatky > * {
+  text-align: center;
+  font-size: 1rem;
+}
+#skryte-poplatky > *:nth-child(-n+5) {
+  font-weight: 900;
+  font-size: 2.5rem;
+}
+#skryte-poplatky > *:nth-child(-n+5):nth-child(odd) {
+  background: #fff;
+  padding: 1em 0.5em 0.75em;
+  border-radius: 0.5em;
+}
+#skryte-poplatky > *:nth-child(n+6):nth-child(even) {
+  background: #fff;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+#skryte-poplatky > *:nth-child(5n) {
+  background: #00e770 !important;
+  cursor: pointer;
+}
+
+#_skryte-poplatky {
   padding: 1em;
   width: calc( 100% - 4em);
 }
-#skryte-poplatky #row {
+#_skryte-poplatky #row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   position: relative;
 }
-#skryte-poplatky #row > a {
+#_skryte-poplatky #row > a {
   border-radius: 100%;
   font-size: 2rem;
   line-height: 3.2rem;
@@ -19,11 +49,11 @@
   text-align: center;
   z-index: 1000;
 }
-#skryte-poplatky #row > a.active {
+#_skryte-poplatky #row > a.active {
   color: #000;
   background: white;
 }
-#skryte-poplatky #row::before {
+#_skryte-poplatky #row::before {
   position: absolute;
   content: "";
   height: 50%;
@@ -31,22 +61,22 @@
   border-bottom: 2px solid #fff;
   width: 100%;
 }
-#skryte-poplatky #content {
+#_skryte-poplatky #content {
   background: #fff;
   margin-top: 1em;
   border-radius: 1em;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-#skryte-poplatky #content > div {
+#_skryte-poplatky #content > div {
   position: relative;
 }
-#skryte-poplatky #content > div .visible {
+#_skryte-poplatky #content > div .visible {
   position: absolute;
   left: 0;
   top: 0;
 }
-#skryte-poplatky input[type=button] {
+#_skryte-poplatky input[type=button] {
   grid-column-start: 2;
   margin: 1em;
 }
@@ -109,6 +139,7 @@
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
+  text-align: center;
 }
 #nucene-scrollovani > *:not(:first-child):not(:last-child)::after {
   content: "Reklama";
@@ -209,7 +240,6 @@
 #falesna-CTA-tlacitka > #buttons > *:nth-child(4), #falesna-CTA-tlacitka > #buttons > *:nth-child(5) {
   animation: "falesna-CTA-tlacitka-squeeze" 0.5s ease-in-out alternate infinite;
 }
-
 #falesna-CTA-tlacitka #buttons {
   transition: filter 0.1s ease-in;
 }
@@ -342,39 +372,54 @@
   margin-left: 0.5em;
 }
 
-#privacy-zuckering #icon {
-  width: 10em;
-  height: 10em;
-  background-image: url("../data/KATEGORIE/2_Privacy_zuckering/zucker.png");
-  background-size: 100%;
-  border-radius: 2em;
+#privacy-zuckering {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#privacy-zuckering #icon #remove {
-  width: 3.5em;
-  height: 3.5em;
-  background: silver;
-  border-radius: 100%;
-  margin: -0.7em 0 0 -0.7em;
+#privacy-zuckering .icon {
+  height: 100%;
+  min-width: 20ch;
+  padding: 0.5em;
+  box-sizing: border-box;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+#privacy-zuckering .icon > div {
+  width: 100%;
+  padding-bottom: 95.96550662%;
+  background-image: url(../data/KATEGORIE/2_Privacy_zuckering/zuck.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
   position: relative;
 }
-#privacy-zuckering #icon #remove:after, #privacy-zuckering #icon #remove:before {
-  content: "";
+#privacy-zuckering .icon > div .remove {
+  cursor: pointer;
+  left: -0.5em;
+  top: -0.5em;
   position: absolute;
-  left: calc( 50% - 1px );
-  top: 0;
-  background: red;
-  width: 0px;
-  margin-top: 15%;
-  height: 70%;
-  transform-origin: 50% 50%;
+  width: 2.5em;
+  height: 2.5em;
+  background: #e3e3e3;
+  border-radius: 100%;
+}
+#privacy-zuckering .icon > div .remove::after, #privacy-zuckering .icon > div .remove::before {
+  top: 10%;
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  content: "";
   border-right: 2px solid #000;
-  box-sizing: border-box;
+  transform-origin: 100% 50%;
 }
-#privacy-zuckering #icon #remove:after {
-  transform: rotate(45deg);
+#privacy-zuckering .icon > div .remove::after {
+  transform: rotate(45deg) translateY(1px);
 }
-#privacy-zuckering #icon #remove:before {
-  transform: rotate(-45deg);
+#privacy-zuckering .icon > div .remove::before {
+  transform: rotate(-45deg) translateY(-1px);
 }
 
 #falesna-volitelna-tlacitka {

@@ -17,7 +17,7 @@
         const y = `${e.clientY  - box.y}px`
         magnifier.style.left = x
         magnifier.style.top = y
-        magnifier.firstChild.firstChild.style.marginLeft = `${-(e.clientX - box.x)}px`
-        magnifier.firstChild.firstChild.style.marginTop = `${-(e.clientY - box.y)*2}px`
+        magnifier.firstElementChild.firstElementChild.style.marginLeft = `${-(e.clientX - box.x)}px`
+        magnifier.firstElementChild.firstElementChild.style.marginTop = `${-(e.clientY - box.y)*2}px`
     }
 </script>

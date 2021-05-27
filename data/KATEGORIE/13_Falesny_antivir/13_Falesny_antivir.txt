@@ -1,0 +1,1 @@
+Falešný antivirParadoxním příkladem jsou antiviry, které po nainstalování přenesou vir (např.: malware/adware MacKeeper, nebo příliš agresivně se chovající Windowsovský antivir Avast s automatickou volbou primárního antiviru bez uživatelského souhlasu).

@@ -16,44 +16,41 @@ env.globals.update(zip=zip)
 def categories(path):
     with open(base/"square_entries.json") as input_file:
         square_entries = json.load(input_file)
-    text_entries = list(path.glob("*.txt"))
+    text_entries = list(path.glob("*"))
+    text_entries = filter(lambda x:x.is_dir(), text_entries)
     text_entries = sorted(text_entries, key=lambda x:int(x.name.split('_')[0]))
     context = {
         "entries" : [],
     }
-    for text_entry in text_entries:
-        illustration = (path/(text_entry.stem+".png")).relative_to(base)
-        illustration_type = "image"
+    for entry in text_entries:
+        illustration = entry/"file.html"
         if illustration.exists():
-            illustration = str(illustration)
+            with open(path/entry.stem/"file.html", "r") as input_file:
+                illustration = env.from_string(input_file.read()).render()
+            interactive = True
+            illustration_type = "html"
         else:
-            if (path/text_entry.stem/"file.html").exists():
-                with open(path/text_entry.stem/"file.html", "r") as input_file:
-                    illustration = env.from_string(input_file.read()).render()
-                illustration_type = "html"
-                interactive = True
-            else:
-                interactive = False
-                illustration = str(illustration)
+            interactive = False
+            illustration = str((illustration.parent/f"{illustration.parent.stem}.svg").relative_to(base))
+            illustration_type = "image"
         
-        if text_entry.stem in ["5_Limitovana_nabidka"]:
+        if entry.stem in ["5_Limitovana_nabidka"]:
             interactive = False
             
-        with open(text_entry) as input_file:
+        with open(entry/f"{entry.stem}.txt") as input_file:
             content = markdown.markdown(input_file.read())
             soup = BeautifulSoup(content, "html.parser")
             soup.find("p").name = "h3"
             hint = soup.find("p", string=re.compile("[H,h]int"))
             if hint is not None:
-                hint_content = re.match(r"\([H,h]int:\ ?(.*)\)", hint.string).group(1)
+                hint_content = re.match(r"\([H,h]int:?\ ?(.*)\)", hint.string).group(1)
                 hint.decompose()
             else:
                 hint_content = None
-            context['entries'].append((soup.prettify(), illustration, illustration_type, hint_content, text_entry.stem in square_entries, interactive))
+        context['entries'].append((soup.prettify(), illustration, illustration_type, hint_content, entry.stem in square_entries, interactive))
     
-    with open(path/"text.md", "r") as input_file:
-        context['content'] = markdown.markdown(input_file.read())    
-
+    with open(path/"Kategorie_uvod.txt", "r") as input_file:
+        context['content'] = markdown.markdown(input_file.read())
     template = env.get_template('categories.html')
     return template.render(**context)
 

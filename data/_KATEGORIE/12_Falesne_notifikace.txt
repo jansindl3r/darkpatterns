@@ -1,0 +1,1 @@
+Falešné notifikace (vizuální zmatení)Součástí „clickbait“ metody se na stránce zobrazují vyskakující falešné notifikace, simulující příchozí zprávu, mail, nebo upozornění ze sociálních sítí atp. Po jejich otevření jste přesměrováni na reklamní stránku.

@@ -75,9 +75,9 @@
     <div class="link" id="kategorie">
     </div>
     <div class="highlight color-highlight center-text">
-     <h2>
+     <p>
       Následující kategorie slouží jako přehled manipulativních metod, na které můžeme v digitálním prostředí narazit. Modré pozadí jsou interaktivní ukázky, oranžové jsou ilustrativní. Nejlepší obranou je o nebezpečí vědět a tím mu předcházet.
-     </h2>
+     </p>
     </div>
     <div class="category-entry">
      <div class="text">
@@ -189,7 +189,21 @@
       </p>
      </div>
      <div>
-      <div class="illustration interactive square html">
+      <div class="illustration interactive _square html">
+       <div id="privacy-zuckering">
+        <div class="icon">
+         <div>
+          <div class="remove" onclick="changeZuck(this)">
+          </div>
+         </div>
+        </div>
+       </div>
+       <script>
+        const changeZuck = (el) => {
+        el.parentNode.style.backgroundImage = "url(./data/KATEGORIE/2_Privacy_zuckering/zuck_ghost.svg)"
+        el.remove()
+    }
+       </script>
       </div>
       <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
        <span class="pointer">
@@ -212,31 +226,25 @@
      </div>
      <div>
       <div class="illustration interactive html">
-       <div id="skryte-poplatky">
-        <div id="row">
-         <a class="btn active">
-          1
-         </a>
-         <a class="btn">
-          2
-         </a>
+       <!-- <div id="skryte-poplatky">
+    <div id="row">
+        <a class="btn active">1</a>
+        <a class="btn">2</a>
+    </div>
+    <div id="content">
+        <div id="image">image</div>
+        <div id="fields">
+            <div class="visible">
+                A
+            </div>
+            <div class="hidden">
+                B
+            </div>
         </div>
-        <div id="content">
-         <div id="image">
-          image
-         </div>
-         <div id="fields">
-          <div class="visible">
-           A
-          </div>
-          <div class="hidden">
-           B
-          </div>
-         </div>
-         <input onclick="skrytePoplatky()" type="button" value="další"/>
-        </div>
-        <script>
-         const row = document.querySelector("#skryte-poplatky>#row").children
+        <input type="button" onclick="skrytePoplatky()" value="další">
+    </div>
+    <script>
+        const row = document.querySelector("#skryte-poplatky>#row").children
         const fields = document.querySelector("#skryte-poplatky>#content>#fields").children
         const input = document.querySelector("#skryte-poplatky>#content>input")
         const skrytePoplatky = () => {
@@ -258,7 +266,37 @@
                 }
             }
         }
-        </script>
+    </script>
+</div> -->
+       <div id="skryte-poplatky">
+        <div>
+         1
+        </div>
+        <div>
+         +
+        </div>
+        <div>
+         5
+        </div>
+        <div>
+         =
+        </div>
+        <div>
+         klikni
+        </div>
+        <div>
+         cena objednávky
+        </div>
+        <div>
+        </div>
+        <div>
+         poplatky
+        </div>
+        <div>
+        </div>
+        <div>
+         součet objednávky
+        </div>
        </div>
       </div>
       <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
@@ -282,7 +320,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/4_Skryte_predplatne.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/4_Skryte_predplatne/4_Skryte_predplatne.svg"/>
       </picture>
      </div>
     </div>
@@ -380,7 +418,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/7_Nutnost_prihlaseni.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/7_Nutnost_prihlaseni/7_Nutnost_prihlaseni.svg"/>
       </picture>
      </div>
     </div>
@@ -395,7 +433,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/8_Falesne_recenze.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/8_Falesne_recenze/8_Falesne_recenze.svg"/>
       </picture>
      </div>
     </div>
@@ -595,7 +633,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/11_Falesne_titulky.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/11_Falesne_titulky/11_Falesne_titulky.svg"/>
       </picture>
      </div>
     </div>
@@ -610,7 +648,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/12_Falesne_notifikace.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/12_Falesne_notifikace/12_Falesne_notifikace.svg"/>
       </picture>
      </div>
     </div>
@@ -625,7 +663,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/13_Falesny_antivir.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/13_Falesny_antivir/13_Falesny_antivir.svg"/>
       </picture>
      </div>
     </div>
@@ -640,7 +678,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/14_Zadne_zpet.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/14_Zadne_zpet/14_Zadne_zpet.svg"/>
       </picture>
      </div>
     </div>
@@ -655,7 +693,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/15_Hard click.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/15_Hard_click/15_Hard_click.svg"/>
       </picture>
      </div>
     </div>
@@ -670,7 +708,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/16_Prazdny_kosik.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/16_Prazdny_kosik/16_Prazdny_kosik.svg"/>
       </picture>
      </div>
     </div>
@@ -1315,7 +1353,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/18_Nuceny_swipe.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/18_Nuceny_swipe/18_Nuceny_swipe.svg"/>
       </picture>
      </div>
     </div>
@@ -1330,7 +1368,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/19_Gamification.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/19_Gamification/19_Gamification.svg"/>
       </picture>
      </div>
     </div>
@@ -1374,8 +1412,8 @@
         const y = `${e.clientY  - box.y}px`
         magnifier.style.left = x
         magnifier.style.top = y
-        magnifier.firstChild.firstChild.style.marginLeft = `${-(e.clientX - box.x)}px`
-        magnifier.firstChild.firstChild.style.marginTop = `${-(e.clientY - box.y)*2}px`
+        magnifier.firstElementChild.firstElementChild.style.marginLeft = `${-(e.clientX - box.x)}px`
+        magnifier.firstElementChild.firstElementChild.style.marginTop = `${-(e.clientY - box.y)*2}px`
     }
        </script>
       </div>
@@ -1400,7 +1438,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/21_Manipulativni UI.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/21_Manipulativni UI/21_Manipulativni UI.svg"/>
       </picture>
      </div>
     </div>
@@ -1450,7 +1488,7 @@
      </div>
      <div class="illustration static image">
       <picture>
-       <img alt="Flowers" src="data/KATEGORIE/23_Pridruzena_slova.png"/>
+       <img alt="Flowers" src="data/KATEGORIE/23_Pridruzena_slova/23_Pridruzena_slova.svg"/>
       </picture>
      </div>
     </div>
