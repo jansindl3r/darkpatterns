@@ -21,9 +21,17 @@ body {
   background: #eee2;
 }
 
-h1 {
-  font-size: 3rem;
-  line-height: 110%;
+@media (max-height: 1000px) {
+  h1 {
+    font-size: 1.5rem;
+    line-height: 110%;
+  }
+}
+@media (min-height: 1000px) {
+  h1 {
+    font-size: 3rem;
+    line-height: 110%;
+  }
 }
 
 h2 {
@@ -43,59 +51,83 @@ nav {
   color: white;
   flex-flow: row wrap;
   text-transform: uppercase;
-  font-size: 1.3rem;
+  font-size: 1rem;
+  margin-top: 1em;
+  padding-bottom: 1em;
   display: flex;
   justify-content: center;
-  margin-top: 2.8em;
-  padding-bottom: 2.8em;
-  top: 0.9rem;
+  top: 1rem;
   position: sticky;
   z-index: 10000;
   pointer-events: none;
 }
-nav > * + * {
-  margin-left: 1rem;
-}
 nav a {
   pointer-events: all;
   color: inherit;
-  padding: 0.6em 1.5em 0.45em;
+  padding: 0.3em 0.4em 0.2em;
   border-radius: 0.7em;
+}
+@media (min-width: 1000px) {
+  nav {
+    font-size: 1.3rem;
+    margin-top: 2.8em;
+    padding-bottom: 2.8em;
+  }
+  nav a {
+    padding: 0.6em 1.5em 0.45em;
+    border-radius: 0.7em;
+  }
+}
+nav > * {
+  margin-top: 0.5rem;
+}
+nav > * + * {
+  margin-left: 0.5rem;
 }
 nav a:nth-child(1) {
   background-color: black;
 }
-nav a:nth-child(1):hover {
-  color: black;
-  background-color: white;
+@media (hover: hover) {
+  nav a:nth-child(1):hover {
+    color: black;
+    background-color: white;
+  }
 }
 nav a:nth-child(2) {
   background-color: #ff2b06;
 }
-nav a:nth-child(2):hover {
-  color: #ff2b06;
-  background-color: white;
+@media (hover: hover) {
+  nav a:nth-child(2):hover {
+    color: #ff2b06;
+    background-color: white;
+  }
 }
 nav a:nth-child(3) {
   background-color: #00e770;
 }
-nav a:nth-child(3):hover {
-  color: #00e770;
-  background-color: white;
+@media (hover: hover) {
+  nav a:nth-child(3):hover {
+    color: #00e770;
+    background-color: white;
+  }
 }
 nav a:nth-child(4) {
   background-color: #ff8bfc;
 }
-nav a:nth-child(4):hover {
-  color: #ff8bfc;
-  background-color: white;
+@media (hover: hover) {
+  nav a:nth-child(4):hover {
+    color: #ff8bfc;
+    background-color: white;
+  }
 }
 nav a:nth-child(5) {
   background-color: #f7901e;
 }
-nav a:nth-child(5):hover {
-  color: #f7901e;
-  background-color: white;
+@media (hover: hover) {
+  nav a:nth-child(5):hover {
+    color: #f7901e;
+    background-color: white;
+  }
 }
 
 .entry-wrapper:nth-of-type(1) .button {
@@ -172,7 +204,12 @@ p {
 article > .divider {
   height: 8rem;
   width: 100%;
-  margin: 5rem 0;
+  margin: 2rem 0;
+}
+@media (min-width: 1000px) {
+  article > .divider {
+    margin: 5rem 0;
+  }
 }
 article > .divider:nth-child(2) {
   background: linear-gradient(rgba(255, 43, 6, 0) 0%, rgba(255, 43, 6, 0.0277777778) 8.3333333333%, rgba(255, 43, 6, 0.1111111111) 16.6666666667%, rgba(255, 43, 6, 0.25) 25%, rgba(255, 43, 6, 0.4444444444) 33.3333333333%, rgba(255, 43, 6, 0.6944444444) 41.6666666667%, #ff2b06 50%, #ff2b06 50%, rgba(255, 43, 6, 0.6944444444) 58.3333333333%, rgba(255, 43, 6, 0.4444444444) 66.6666666667%, rgba(255, 43, 6, 0.25) 75%, rgba(255, 43, 6, 0.1111111111) 83.3333333333%, rgba(255, 43, 6, 0.0277777778) 91.6666666667%, rgba(255, 43, 6, 0) 100%);
@@ -185,6 +222,24 @@ article > .divider:nth-child(6) {
 }
 article > .divider:nth-child(8) {
   background: linear-gradient(rgba(247, 144, 30, 0) 0%, rgba(247, 144, 30, 0.0277777778) 8.3333333333%, rgba(247, 144, 30, 0.1111111111) 16.6666666667%, rgba(247, 144, 30, 0.25) 25%, rgba(247, 144, 30, 0.4444444444) 33.3333333333%, rgba(247, 144, 30, 0.6944444444) 41.6666666667%, #f7901e 50%, #f7901e 50%, rgba(247, 144, 30, 0.6944444444) 58.3333333333%, rgba(247, 144, 30, 0.4444444444) 66.6666666667%, rgba(247, 144, 30, 0.25) 75%, rgba(247, 144, 30, 0.1111111111) 83.3333333333%, rgba(247, 144, 30, 0.0277777778) 91.6666666667%, rgba(247, 144, 30, 0) 100%);
+}
+
+#intro {
+  text-align: center;
+}
+#intro picture {
+  max-width: 90ch;
+}
+#intro picture img {
+  max-width: inherit;
+}
+#intro div {
+  margin-top: 2rem;
+}
+@media (min-width: 1000px) {
+  #intro div {
+    margin-top: 8rem;
+  }
 }
 
 .divider-bottom {
@@ -213,17 +268,45 @@ p .button {
 
 .category-entry {
   display: flex;
-  flex-direction: row;
-  min-height: 20em;
-  max-width: 130ch;
-  margin: 4rem auto;
+  flex-direction: column;
 }
-.category-entry > * {
-  width: 50%;
-  margin: 2rem;
+@media (max-width: 1000px) {
+  .category-entry {
+    max-width: 72ch;
+    margin: 0 auto;
+  }
+  .category-entry .illustration {
+    min-height: 10em;
+    box-sizing: border-box;
+  }
+  .category-entry .illustration.image {
+    max-height: 15em;
+  }
+  .category-entry .illustration.html {
+    font-size: 0.9rem;
+  }
 }
-.category-entry:nth-child(2n) {
-  flex-direction: row-reverse;
+@media (min-width: 1000px) {
+  .category-entry {
+    flex-direction: row;
+    min-height: 20em;
+    max-height: 30em;
+    max-width: 130ch;
+    margin: 4rem auto;
+  }
+  .category-entry > * {
+    width: 50%;
+    margin: 2rem;
+  }
+  .category-entry:nth-child(2n) {
+    flex-direction: row-reverse;
+  }
+  .category-entry .text > * {
+    max-width: 70ch;
+  }
+  .category-entry .illustration.html {
+    font-size: 1.25rem;
+  }
 }
 .category-entry .text, .category-entry .illustration {
   display: flex;
@@ -231,26 +314,13 @@ p .button {
   justify-content: center;
   position: relative;
 }
-.category-entry .illustration.square {
-  width: 50%;
-  margin: 0 auto;
-}
-.category-entry .text > * {
-  max-width: 70ch;
-}
-.category-entry picture img {
-  height: 100%;
-}
 .category-entry .illustration {
   align-items: center;
 }
-.category-entry .illustration picture {
-  max-height: 20em;
+.category-entry .illustration picture, .category-entry .illustration svg {
   width: 100%;
-  text-align: center;
 }
 .category-entry .illustration.html {
-  font-size: 1.25rem;
   height: 100%;
 }
 .category-entry .illustration.image {
@@ -262,8 +332,12 @@ p .button {
 .category-entry .illustration.static {
   background: #f06000;
 }
+.category-entry .hint {
+  display: none;
+}
 @media (hover: hover) {
   .category-entry .hint {
+    display: inline;
     cursor: pointer;
   }
   .category-entry .hint:hover > span:last-child {
@@ -271,7 +345,7 @@ p .button {
   }
 }
 
-.button, input[type=button] {
+.button, input[type=button], input[type=submit] {
   outline: none;
   border: none;
   cursor: pointer;
@@ -283,10 +357,19 @@ p .button {
   transition: transform 0.1s ease-in-out;
 }
 
+input {
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+}
+input ::placeholder {
+  color: gray !important;
+  opacity: 1;
+}
+
 .checkbox {
   font-size: inherit;
   width: 1.5em;
-  margin: -0.25em 1ch 0 1ch;
   height: 1.5em;
   display: inline-block;
   position: relative;
@@ -297,9 +380,10 @@ p .button {
   height: 1.5em;
   position: absolute;
   left: 0;
+  top: 0;
   display: inline-block;
   background: #fff;
-  border: 2px solid silver;
+  border: 1px solid gray;
   box-sizing: border-box;
 }
 .checkbox input {

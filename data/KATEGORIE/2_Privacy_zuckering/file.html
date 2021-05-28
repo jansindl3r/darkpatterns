@@ -1,6 +1,8 @@
 <div id="privacy-zuckering">
     <div class="icon">
         <div>
+        </div>
+        <div>
             <div class="remove" onclick="changeZuck(this)">
             </div>
         </div>
@@ -8,7 +10,8 @@
 </div>
 <script>
     const changeZuck = (el) => {
-        el.parentNode.style.backgroundImage = "url(./data/KATEGORIE/2_Privacy_zuckering/zuck_ghost.svg)"
+        // el.parentNode.style.backgroundImage = "url(./data/KATEGORIE/2_Privacy_zuckering/zuck_ghost.svg)"
+        el.parentNode.classList.add("go-away")
         el.remove()
     } 
 </script>

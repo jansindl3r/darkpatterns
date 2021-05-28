@@ -9,9 +9,7 @@
         </div>
         {% if illustration_type == "image" %}
             <div class="illustration static{% if square%} square{%endif%} image">
-                <picture>
-                    <img src="{{illustration}}" alt="Flowers">
-                </picture>
+                {{illustration}}
             </div>
         {% else %}
             <div>
@@ -19,7 +17,7 @@
                     {{illustration|safe}}
                 </div>
                 {% if hint_content %}
-                    <small class="hint" onclick="this.children[0].style.display = 'none';this.children[1].style.display = 'inline'">
+                    <small class="hint">
                         <span class="pointer">...</span>
                         <span style="display: None;">{{hint_content}}</span>
                     </small>

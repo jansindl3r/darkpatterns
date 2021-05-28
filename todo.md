@@ -3,7 +3,9 @@
 - [x] falešná cta tlačítka, jen přidat oznámení ve stejném stylu jako u confirmshaming, že jsem klikl na špatné, nebo na dobré, jinak jakékoliv rollover efekty dobré, klidně přidat i k ostatním!
 - [x] nucené scrollování, udělat ještě tak pětkrát delší scrollování
 - [ ] skryté poplatky udělat matematický příklad, kde po kliknutí vyskočí jen nesmyslně vysoká částka
-- [ ] privacy zuckering: tam budou dva kroky, první zuckerberg s křížkem, při kliknutí na křížek se objeví oznámení o smazání, ale pouze z telefonu, s tím, že na cloudu data zůstanou a pak po potvrzení ok se zobrazí zuckerberg duch
+- [x] privacy zuckering: tam budou dva kroky, první zuckerberg s křížkem, při kliknutí na křížek se objeví oznámení o smazání, ale pouze z telefonu, s tím, že na cloudu data zůstanou a pak po potvrzení ok se zobrazí zuckerberg duch
 - [ ] skryté předplatné — pokud je reálné udělat animaci přejížděcí text další měsíc a odečet peněz z účtu zprava doleva, pokud ne, necháme statickou ilu
 - [ ] hardclick dodám ilu
 - [ ] confirmshaming — tlačítko co tam už teď je, plus po něm se zobrazí ilu s textem
+- [ ] skryte poplatky - kliknout a ukaze blbej soucet
+- [ ] skryte predplatne - efekt

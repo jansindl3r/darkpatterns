@@ -1,14 +1,3 @@
-#intro {
-  text-align: center;
-}
-#intro picture {
-  max-width: 90ch;
-}
-#intro picture img {
-  max-width: inherit;
-}
-#intro div {
-  margin-top: 8rem;
-}
+
 
 /*# sourceMappingURL=intro.css.map */

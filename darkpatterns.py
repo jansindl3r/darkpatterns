@@ -31,10 +31,16 @@ def categories(path):
             illustration_type = "html"
         else:
             interactive = False
-            illustration = str((illustration.parent/f"{illustration.parent.stem}.svg").relative_to(base))
+            try:
+                with open(illustration.parent/f"{illustration.parent.stem}.svg", "r") as input_file:
+                    illustration = input_file.read() 
+            except:
+                illustration = ""
+            illustration = illustration.replace("<path", '<path vector-effect="non-scaling-stroke"')
+            # illustration = str((illustration.parent/f"{illustration.parent.stem}.svg").relative_to(base))
             illustration_type = "image"
         
-        if entry.stem in ["5_Limitovana_nabidka"]:
+        if entry.stem in ["5_Limitovana_nabidka", "23_Pridruzena_slova", "7_Nutnost_prihlaseni"]:
             interactive = False
             
         with open(entry/f"{entry.stem}.txt") as input_file:

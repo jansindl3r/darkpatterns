@@ -1,6 +1,7 @@
 @use 'sass:color';
 @use 'sass:list';
 @use 'mixins';
+@import 'mixins';
 
 $static-pic-background: rgb(0, 146, 252);
 $categories-colors: rgba(0, 0, 0, 1), rgba(255, 43, 6, 1), rgba(0, 231, 112, 1), rgba(255, 139, 252, 1), rgba(247, 144, 30, 1);
@@ -30,8 +31,14 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
-    line-height: 110%;
+    @media (max-height: $breakpoint) {
+        font-size: 1.5rem;
+        line-height: 110%;
+    }
+    @media (min-height: $breakpoint) {
+        font-size: 3rem;
+        line-height: 110%;
+    }
 }
 
 h2 {
@@ -52,31 +59,46 @@ nav {
     color: white;
     flex-flow: row wrap;
     text-transform: uppercase;
-    font-size: 1.3rem;
-    display: flex;
-    justify-content: center;
-    margin-top: 2.8em;
-    padding-bottom:2.8em;
-    top: .9rem;
-    position: sticky;
-    z-index: 10000;
-    pointer-events: none;
-    > * + *{
-        margin-left: 1rem;
-    }
+    
+    font-size: 1rem;
+    margin-top: 1em;
+    padding-bottom: 1em;
     a {
         pointer-events: all;
         color: inherit;
-        padding: .6em 1.5em .45em;
+        padding: .3em .4em .2em;
         border-radius: .7em;
+    }
+    @media (min-width: $breakpoint) {
+        font-size: 1.3rem;
+        margin-top: 2.8em;
+        padding-bottom:2.8em;
+        a {
+            padding: .6em 1.5em .45em;
+            border-radius: .7em;
+        }
+    }
+    display: flex;
+    justify-content: center;
+    top: 1rem;
+    position: sticky;
+    z-index: 10000;
+    pointer-events: none;
+    > * {
+        margin-top: .5rem;
+    }
+    > * + *{
+        margin-left: .5rem;
     }
     @for $i from 1 through length($categories-colors) {
         $color: nth($categories-colors, $i);
         a:nth-child(#{$i}) {
           background-color: $color;
-          &:hover {
-              color: $color;
-              background-color: white;
+          @media (hover:hover) {
+              &:hover {
+                  color: $color;
+                  background-color: white;
+              }
           }
         }
       }
@@ -147,12 +169,31 @@ p {
 article > .divider {
     height: 8rem;
     width: 100%;
-    margin: 5rem 0;
+    margin: 2rem 0;
+    @media (min-width: $breakpoint) {
+        margin: 5rem 0;
+    }
     @for $i from 2 through length($categories-colors) {
         $color: nth($categories-colors, $i);
         &:nth-child(#{($i - 1) * 2}) {
             @include mixins.smooth-opacity-gradient($color, 6);
             // background: linear-gradient(rgba(255, 0, 0, 0), rgba(255, 0, 0, 1), rgba(255, 0, 0, 0));
+        }
+    }
+}
+
+#intro {
+    text-align: center;
+    picture {
+        max-width: 90ch;
+        img {
+            max-width: inherit;
+        }
+    }
+    div {
+        margin-top: 2rem;
+        @media (min-width: $breakpoint) {
+            margin-top: 8rem;
         }
     }
 }
@@ -185,16 +226,40 @@ p {
 
 .category-entry {
     display: flex;
-    flex-direction: row;
-    min-height: 20em;
-    max-width: 130ch;
-    margin: 4rem auto;
-    > * {
-        width: 50%;
-        margin: 2rem;
+    flex-direction: column;
+    @media (max-width: $breakpoint) {
+        max-width: 72ch;
+        margin: 0 auto;
+        .illustration {
+            min-height: 10em;
+            box-sizing: border-box;
+            &.image {
+                max-height: 15em;
+            }
+            &.html {
+                font-size: .9rem;
+            }
+        }
     }
-    &:nth-child(2n) {
-        flex-direction: row-reverse;
+    @media (min-width: $breakpoint) {
+        flex-direction: row;
+        > * {
+            width: 50%;
+            margin: 2rem;
+        }
+        min-height: 20em;
+        max-height: 30em;
+        max-width: 130ch;
+        margin: 4rem auto;
+        &:nth-child(2n) {
+            flex-direction: row-reverse;
+        }
+        .text > *{
+            max-width: 70ch;
+        }
+        .illustration.html {
+            font-size: 1.25rem;
+        }
     }
     .text, .illustration {
         display: flex;
@@ -202,48 +267,28 @@ p {
         justify-content: center;
         position: relative;
     }
-    .illustration.square {
-        width: 50%;
-        margin: 0 auto;
-    }
-    .text {
-        > * {
-            max-width: 70ch;
-        }
-    }
-    picture {
-        img {
-            height: 100%;
-        }
-    }
     .illustration {
         align-items: center;
-
-        picture {
-            max-height: 20em;
+        picture, svg {
             width: 100%;
-            text-align: center;
         }
-
         &.html {
-            font-size: 1.25rem;
             height: 100%;
         }
-        
         &.image {
             overflow: hidden;
         }
-        
         &.interactive {
             background: $static-pic-background;
         }
-        
         &.static {
             background: #f06000;
         }
     }
     .hint {
+        display: none;
         @media (hover:hover){
+            display: inline;
             cursor: pointer;
             &:hover {
                 > span:last-child {
@@ -254,7 +299,7 @@ p {
     }
 }
 
-.button, input[type=button] {
+.button, input[type=button], input[type=submit] {
     outline: none;
     border: none;
     cursor: pointer;
@@ -267,10 +312,21 @@ p {
 }
 
 
+input {
+    outline: none;
+    border: $line-width solid gray;
+    border-radius: .2rem;
+    ::placeholder {
+        color: rgb(128, 128, 128) !important;
+        opacity: 1;
+    }
+}
+
+
 .checkbox {
     font-size: inherit;
     width: 1.5em;
-    margin: -.25em 1ch 0 1ch;
+    // margin: -.25em 1ch 0 1ch;
     height: 1.5em;
     display: inline-block;
     position: relative;
@@ -280,9 +336,10 @@ p {
         height: 1.5em;
         position: absolute;
         left: 0;
+        top: 0;
         display: inline-block;
         background: #fff;
-        border: 2px solid silver;
+        border: $line-width solid gray;
         box-sizing: border-box;
     }
     input {
