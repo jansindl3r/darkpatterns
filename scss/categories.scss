@@ -1,20 +1,28 @@
+@use 'sass:math';
 @import "mixins";
 $transition: .1s;
 
 #skryte-poplatky {
+    width: 100%;
+    margin: 0 auto;
+    align-self: center;
     display: grid;
     grid-template-columns: auto 2ch auto 2ch auto;
+    justify-content: space-between;
     padding: 2em;
     gap: .5em;
     align-items: center;
     > * {
         text-align: center;
         font-size: 1rem;
+        @media (max-width: $breakpoint) {
+            font-size: .8rem;
+        }
         &:nth-child(-n+5) {
             font-weight: 900;
             font-size: 2.5rem;
             @media (max-width: $breakpoint) {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
             &:nth-child(odd) {
                 background: #fff;
@@ -38,6 +46,9 @@ $transition: .1s;
 }
 
 #svabi-motel {
+    align-self: stretch;
+    width: 100%;
+    padding: 2em;
     &.done {
         > *:not(.correct) {
             opacity: 0 !important;
@@ -46,14 +57,12 @@ $transition: .1s;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(4, auto);
-    @media (max-width: $breakpoint) {
-        grid-template-columns: repeat(3, auto);
-    }
+    // @media (max-width: $breakpoint) {
+    //     grid-template-columns: repeat(3, auto);
+    // }
     grid-template-rows: repeat(5, 1fr);
     font-size: 1rem;
     gap: .5em .5em;
-    width: calc(100% - 2em);
-    height: calc(100% - 2em);
     > * {
         opacity: 0.5;
         user-select: none;
@@ -78,15 +87,15 @@ $transition: .1s;
             background: $negative;
         }
         pointer-events: none;
-        @media (max-width: $breakpoint) {
-            &:nth-child(-n+5) {
-                display: none;
-            }
-            &:not(.active):nth-child(-n+10) {
-                opacity: 1;
-                pointer-events: all;
-            }
-        }
+        // @media (max-width: $breakpoint) {
+        //     &:nth-child(-n+5) {
+        //         display: none;
+        //     }
+        //     &:not(.active):nth-child(-n+10) {
+        //         opacity: 1;
+        //         pointer-events: all;
+        //     }
+        // }
     }
     *.active{
         pointer-events: all;
@@ -96,7 +105,7 @@ $transition: .1s;
 
 #nucene-scrollovani {
     display: block;
-    height: 100%;
+    // height: 100%;
     width: 100%;
     overflow-y: scroll;
     > * {
@@ -111,7 +120,10 @@ $transition: .1s;
         text-align: center;
         &:not(:first-child):not(:last-child)::after {
             content: "Reklama";
-            font-size: 6rem;
+            font-size: 4rem;
+            @media (min-width) {
+                font-size: 6rem;
+            }
             position: absolute;
 
         }
@@ -119,6 +131,8 @@ $transition: .1s;
 }
 
 #confirmshaming {
+    align-self: center;
+    margin: 0 auto;
     input {
         opacity: 1;
         transition: opacity $transition ease-in;
@@ -158,17 +172,27 @@ $transition: .1s;
 
 
 #falesna-CTA-tlacitka {
-    height: auto;
-    width: calc(100% - 2em);
+    width: 100%;
     user-select: none;
+    align-self: center;
     > #buttons {
         display: grid;
         grid-template-areas: 
-        "a a b b b"
-        "c c c d d"
-        "e e f d d"
-        "e e g g g";
-        grid-template-columns: repeat(5, 1fr);
+            "a a b b b"
+            "c c c d d"
+            "e e f d d"
+            "e e g g g"
+        ;
+        @media (min-width: 600px) and (max-width: $breakpoint) {
+            grid-template-areas: 
+                "g g g c c c"
+                "e e a a f z"
+                "e e b b b z"
+                ;
+            > *:nth-child(4) {
+                display: none;
+            }
+        }
         $letters: a, b, c, d, e, f, g;
         @for $i from 1 through length($letters) {
             $letter: nth($letters, $i);
@@ -267,6 +291,7 @@ $transition: .1s;
 }
 
 #limitovana-nabidka {
+    width: 100%;
     font-size: 1rem;
     display: grid;
     grid-template-areas:
@@ -274,8 +299,9 @@ $transition: .1s;
     "c c"
     ;
     user-select: none;
-    width: calc(100% - 2em);
-    grid-template-rows: 7em auto;
+    // width: 100%;
+    // height: 100%;
+    grid-template-rows: auto 5em;
     grid-template-columns: 2fr 3fr;
     gap: 1rem;
     color: #000;
@@ -347,16 +373,59 @@ $transition: .1s;
     }
 }
 
-#privacy-zuckering {
+@keyframes skryte-predplatne {
+    @for $i from 0 through 13 {
+        @for $k from 0 through 1 {
+            #{$i/13 * 100% + $k*2} {
+                margin-left: 100 - $i * 100%;
+            }
+        }
+    }
+}
+
+#skryte-predplatne {
     height: 100%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    img {
+        width: 100%;
+        max-height: 25ch;
+    }
+
+    #months {
+        height: 100%;
+        width: 100%;
+        white-space: nowrap;
+        position: absolute;
+        top: 35%;
+        animation: skryte-predplatne 14s ease-in-out infinite;
+        font-size: 0;
+        > * {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            > .month {
+                font-size: 3rem;
+                font-weight: 900;
+                line-height: 120%;
+            }
+            > .price {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+#privacy-zuckering {
+    margin: 0 auto;
+    align-self: center;
     .icon {
         height: 100%;
-        min-width: 20ch;
-        padding: .5em;
+        min-width: 15ch;
+        // padding: .5em;
         box-sizing: border-box;
         overflow: visible;
         display: flex;
@@ -412,23 +481,25 @@ $transition: .1s;
 
 #falesna-volitelna-tlacitka {
     font-size: 1rem;
+    align-self: center;
+    margin: 0 auto;
     > div {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: .5em 2em;
-        margin: .75em 0;
-        > div {
-            display: flex;
-            align-items: center;
-            & > * + * {
-                margin-left: .5em;
-            }
+        grid-template-columns: repeat(4, auto);
+        gap: .5em 0;
+        align-items: center;
+        align-content: space-between;
+        label + span {
+            margin-left: .5em;
+        }
+        > *:nth-child(4n+3) {
+            margin-left: 1.5em;
         }
     }
 }
 
 #dvojity-negativ {
-    height: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -450,9 +521,9 @@ $transition: .1s;
 #neviditelne-pismo {
     position: relative;
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     user-select: none;
     cursor: none;
     overflow: hidden;
@@ -461,26 +532,28 @@ $transition: .1s;
         opacity: 0.2;
     }
     #magnifier {
-        font-size: 4.5em;
+        width: 100%;
+        font-size: 3em;
         position: absolute;
         > div {
-            margin-left: -10rem;
-            margin-top: -10rem;
-            padding-top: 10rem;
-            padding-left: 10rem;
-            box-sizing: border-box;
-            height: 20rem;
-            width: 20rem;
-            overflow: hidden;
-            background: #fff;
+            width: 10rem;
+            height: 10rem;
+            margin-left: -5rem;
+            margin-top: -5rem;
             border: $line-width #000 solid;
             border-radius: 100%;
-            display: flex;
-            align-items: center;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
             > div {
-                transform: translateY(50%);
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                display: flex;
+                align-items:center;
+                justify-content: center;
             }
-            
         }
     }
     #small, #magnifier {
@@ -509,26 +582,43 @@ $transition: .1s;
 #nutnost-prihlaseni {
     user-select: none;
     pointer-events: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    > * {
+        min-width: 50%;
+    }
     form {
+        min-width: 25ch;
         > div:first-child {
             text-align: center;
         }
-        margin: 2rem;
+        margin-right:0;
         padding: 1rem;
         font-size: 1rem;
-        gap: .5rem;
+        > * + * {
+            margin-top: .5rem !important;
+        }
         display: flex;
         flex-direction: column;
         input {
             font-size: inherit !important;
             margin: 0;
-            &[type=button], &[type=submit] {
-                background: $orange;
+            &::placeholder {
+                color: inherit;
+            }
+            &[type=button], &[type=submit], &[type=email], &[type=password] {
+                background: transparent;
+                border: $line-width #000 solid;
             }
             &[type=button] {
                 color: #fff;
+            }
+        }
+        .checkbox {
+            span {
+                background: transparent;
+                border-color: #000;
             }
         }
         .hint {
@@ -537,6 +627,30 @@ $transition: .1s;
         }
         border-radius: 1rem;
         border: #000 $line-width solid;
-        background: #fff;
+    }
+    .image {
+        min-height: 100%;
+        width: 100%;
+        position: relative;
+        > * {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            > img {
+                position: absolute;
+                min-height: 99%;
+                max-height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+// padding
+#limitovana-nabidka, #falesna-volitelna-tlacitka, #nutnost-prihlaseni  {
+    padding: 2em;
+    @media (max-width: $breakpoint) {
+        padding: 1em;
     }
 }

@@ -21,13 +21,15 @@ body {
   background: #eee2;
 }
 
-@media (max-height: 1000px) {
+h1 {
+  line-height: 110%;
+}
+@media (max-width: 1000px) {
   h1 {
     font-size: 1.5rem;
-    line-height: 110%;
   }
 }
-@media (min-height: 1000px) {
+@media (min-width: 1000px) {
   h1 {
     font-size: 3rem;
     line-height: 110%;
@@ -172,6 +174,11 @@ p {
   position: absolute;
   top: -9rem;
 }
+@media (min-width: 1000px) {
+  .link {
+    top: -6rem;
+  }
+}
 
 .profile {
   height: 2em;
@@ -269,14 +276,15 @@ p .button {
 .category-entry {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 @media (max-width: 1000px) {
   .category-entry {
     max-width: 72ch;
-    margin: 0 auto;
+    margin: 2rem auto;
   }
   .category-entry .illustration {
-    min-height: 10em;
+    min-height: 15em;
     box-sizing: border-box;
   }
   .category-entry .illustration.image {
@@ -308,25 +316,25 @@ p .button {
     font-size: 1.25rem;
   }
 }
-.category-entry .text, .category-entry .illustration {
+.category-entry .illustration, .category-entry .text {
   display: flex;
+}
+.category-entry .text {
   flex-direction: column;
   justify-content: center;
-  position: relative;
-}
-.category-entry .illustration {
-  align-items: center;
 }
 .category-entry .illustration picture, .category-entry .illustration svg {
   width: 100%;
 }
 .category-entry .illustration.html {
+  position: relative;
   height: 100%;
 }
 .category-entry .illustration.image {
-  overflow: hidden;
+  opacity: 0;
 }
 .category-entry .illustration.interactive {
+  position: relative;
   background: #0092fc;
 }
 .category-entry .illustration.static {

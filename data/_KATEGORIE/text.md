@@ -1,1 +1,0 @@
-## Následující kategorie slouží jako přehled manipulativních metod, na které můžeme v digitálním prostředí narazit. Modré pozadí jsou interaktivní ukázky, oranžové jsou ilustrativní. Nejlepší obranou je o nebezpečí vědět a tím mu předcházet.

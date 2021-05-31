@@ -5,19 +5,50 @@
 <script>
     const neviditelnePismo= document.getElementById("neviditelne-pismo")
     const magnifier = document.getElementById("magnifier")
-    neviditelnePismo.onmouseenter = () => {
-        magnifier.style.display = "block"
+    if ("onmousemove" in document.documentElement) {
+        neviditelnePismo.onmouseenter = () => {
+            magnifier.style.display = "inline-block"
+        }
+        neviditelnePismo.onmouseleave = () => {
+            magnifier.style.display = "none"
+        }
+        neviditelnePismo.onmousemove = (e) => {
+            const box = neviditelnePismo.getBoundingClientRect()
+            magnifier.style.left = `${e.clientX  - box.x}px`
+            magnifier.style.top = `${e.clientY  - box.y}px`
+            magnifier.firstElementChild.firstElementChild.style.left =  `${box.width/2 - (e.clientX - box.x)}px`
+            magnifier.firstElementChild.firstElementChild.style.top = `${box.height/2 - (e.clientY - box.y)}px`
+        }
     }
-    neviditelnePismo.onmouseleave = () => {
-        magnifier.style.display = "none"
-    }
-    neviditelnePismo.onmousemove = (e) => {
-        const box = neviditelnePismo.getBoundingClientRect()
-        const x = `${e.clientX  - box.x}px`
-        const y = `${e.clientY  - box.y}px`
-        magnifier.style.left = x
-        magnifier.style.top = y
-        magnifier.firstElementChild.firstElementChild.style.marginLeft = `${-(e.clientX - box.x)}px`
-        magnifier.firstElementChild.firstElementChild.style.marginTop = `${-(e.clientY - box.y)*2}px`
+    if ("ontouchmove" in document.documentElement) {
+        neviditelnePismo.ontouchstart = () => {
+            magnifier.style.display = "block"
+        }
+        neviditelnePismo.ontouchend = (e) => {
+            const evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent
+            const touches = evt.touches || evt.changedTouches
+            if (touches.length <= 1) {
+                magnifier.style.display = "none"
+            }
+            else {
+                e.preventDefault()
+                e.stopPropagation()
+            }
+            
+        }
+        neviditelnePismo.ontouchmove = (e) => {
+            const evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent
+            const touches = evt.touches || evt.changedTouches
+            if (touches.length <= 1) {
+                const touch = touches[0]
+                e.preventDefault()
+                e.stopPropagation()
+                const box = neviditelnePismo.getBoundingClientRect()
+                magnifier.style.left = `${touch.clientX  - box.x}px`
+                magnifier.style.top = `${touch.clientY  - box.y}px`
+                magnifier.firstElementChild.firstElementChild.style.left =  `${box.width/2 - (touch.clientX - box.x)}px`
+                magnifier.firstElementChild.firstElementChild.style.top = `${box.height/2 - (touch.clientY - box.y)}px`
+            }
+        }
     }
 </script>

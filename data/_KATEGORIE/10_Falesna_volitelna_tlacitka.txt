@@ -1,3 +1,0 @@
-Falešná volitelná tlačítkaZaškrtávací políčka se zobrazují jako přepínací tlačítka (tzv. radio buttons), takže uživatel má na základě zkušenosti větší sklon vybrat pouze jednu možnost, která se hodí dotazujícímu subjektu.
-
-(hint: Vyzkoušej si falešná přepínací tlačítka)

@@ -31,11 +31,11 @@ body {
 }
 
 h1 {
-    @media (max-height: $breakpoint) {
+    line-height: 110%;
+    @media (max-width: $breakpoint) {
         font-size: 1.5rem;
-        line-height: 110%;
     }
-    @media (min-height: $breakpoint) {
+    @media (min-width: $breakpoint) {
         font-size: 3rem;
         line-height: 110%;
     }
@@ -134,6 +134,9 @@ p {
 .link {
     position: absolute;
     top: -9rem;
+    @media (min-width: $breakpoint) {
+        top: -6rem;
+    }
 }
 
 .profile {
@@ -227,11 +230,12 @@ p {
 .category-entry {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     @media (max-width: $breakpoint) {
         max-width: 72ch;
-        margin: 0 auto;
+        margin: 2rem auto;
         .illustration {
-            min-height: 10em;
+            min-height: 15em;
             box-sizing: border-box;
             &.image {
                 max-height: 15em;
@@ -261,24 +265,27 @@ p {
             font-size: 1.25rem;
         }
     }
-    .text, .illustration {
+    .illustration, .text {
         display: flex;
+    }
+    .text {
         flex-direction: column;
         justify-content: center;
-        position: relative;
     }
     .illustration {
-        align-items: center;
         picture, svg {
             width: 100%;
         }
         &.html {
+            position: relative;
             height: 100%;
         }
         &.image {
-            overflow: hidden;
+            opacity: 0;
+            // overflow: hidden;
         }
         &.interactive {
+            position: relative;
             background: $static-pic-background;
         }
         &.static {

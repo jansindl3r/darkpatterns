@@ -25,8 +25,11 @@ def categories(path):
     for entry in text_entries:
         illustration = entry/"file.html"
         if illustration.exists():
+            svgs = {}
+            for svg in entry.glob("*.svg"):
+                svgs[svg.stem] = svg.relative_to(base)
             with open(path/entry.stem/"file.html", "r") as input_file:
-                illustration = env.from_string(input_file.read()).render()
+                illustration = env.from_string(input_file.read()).render({"svgs": svgs})
             interactive = True
             illustration_type = "html"
         else:
@@ -37,10 +40,9 @@ def categories(path):
             except:
                 illustration = ""
             illustration = illustration.replace("<path", '<path vector-effect="non-scaling-stroke"')
-            # illustration = str((illustration.parent/f"{illustration.parent.stem}.svg").relative_to(base))
             illustration_type = "image"
         
-        if entry.stem in ["5_Limitovana_nabidka", "23_Pridruzena_slova", "7_Nutnost_prihlaseni"]:
+        if entry.stem in ["5_Limitovana_nabidka", "23_Pridruzena_slova", "7_Nutnost_prihlaseni", "4_Skryte_predplatne"]:
             interactive = False
             
         with open(entry/f"{entry.stem}.txt") as input_file:

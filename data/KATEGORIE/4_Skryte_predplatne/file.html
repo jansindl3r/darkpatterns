@@ -1,0 +1,12 @@
+<div id="skryte-predplatne">
+    <img src="{{svgs['4_Skryte_predplatne']}}">
+    <div id="months">
+        {% set months=["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"]%}
+        {% for month in months %}
+            <div>
+                <div class="month">{{month}}</div>
+                <div class="price">-249Kč</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
