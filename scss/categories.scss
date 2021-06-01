@@ -8,9 +8,9 @@ $transition: .1s;
     align-self: center;
     display: grid;
     grid-template-columns: auto 2ch auto 2ch auto;
-    justify-content: space-between;
+    justify-content: space-around;
     box-sizing: border-box;
-    @include gap(1em .2em);
+    @include gap(.5em .2em);
     align-items: center;
     > * {
         text-align: center;
@@ -48,7 +48,8 @@ $transition: .1s;
 #svabi-motel {
     align-self: stretch;
     width: 100%;
-    padding: 2em;
+    height: 100%;
+    box-sizing: border-box;
     &.done {
         > *:not(.correct) {
             opacity: 0 !important;
@@ -57,12 +58,14 @@ $transition: .1s;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(4, auto);
-    // @media (max-width: $breakpoint) {
-    //     grid-template-columns: repeat(3, auto);
-    // }
     grid-template-rows: repeat(5, 1fr);
     font-size: 1rem;
-    gap: .5em .5em;
+    @media (max-width: $breakpoint) {
+        @include gap(.5rem);
+    }
+    @media (min-width: $breakpoint) {
+        @include gap(.8rem);
+    }
     > * {
         opacity: 0.5;
         user-select: none;
@@ -105,7 +108,6 @@ $transition: .1s;
 
 #nucene-scrollovani {
     display: block;
-    height: 100%;
     width: 100%;
     overflow-y: scroll;
     position: relative;
@@ -139,7 +141,8 @@ $transition: .1s;
 #confirmshaming {
     align-self: center;
     margin: 0 auto;
-    input {
+    div {
+        margin: 1em;
         background: #fff;
         opacity: 1;
         transition: opacity $transition ease-in;
@@ -176,14 +179,14 @@ $transition: .1s;
 }
 
 
-
-
 #falesna-CTA-tlacitka {
     width: 100%;
     height: 100%;
     user-select: none;
-    align-self: center;
+    display: block;
+    position: relative;
     > #buttons {
+        transition: filter .1s ease-in;
         display: grid;
         grid-template-areas: 
             "a a b b b"
@@ -210,7 +213,8 @@ $transition: .1s;
         }
         > * {
             box-sizing: content-box !important;
-            height: auto;
+            height: 100%;
+            width: 100%;
             cursor: pointer;
         }
         > * > img {
@@ -235,9 +239,6 @@ $transition: .1s;
             animation: "falesna-CTA-tlacitka-squeeze" .5s ease-in-out alternate infinite;
         }
         
-    }
-    #buttons {
-        transition: filter .1s ease-in;
     }
     &.blur > #buttons {
         filter: blur(4px);
@@ -436,14 +437,16 @@ $transition: .1s;
 #privacy-zuckering {
     margin: 0 auto;
     align-self: center;
+    @include flex;
+    @include alignItems(center);
     .icon {
-        height: 100%;
+        height: 50%;
+        // opacity: 0.5;
         min-width: 15ch;
-        // padding: .5em;
         box-sizing: border-box;
         overflow: visible;
-        display: flex;
-        align-items: center;
+        @include flex;
+        @include alignItems(center);
         position: relative;
         > div {
             width: 100%;
@@ -535,15 +538,14 @@ $transition: .1s;
 #neviditelne-pismo {
     position: relative;
     width: 100%;
-    @include flex;
-    @include alignItems(center);
-    @include justifyContent;
-    user-select: none;
+    height: 100%;
     cursor: none;
-    overflow: hidden;
     #small {
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
         font-size: .5em;
-        opacity: 0.2;
+        opacity: 0.3;
     }
     #magnifier {
         width: 100%;
@@ -579,13 +581,13 @@ $transition: .1s;
 }
 
 #pridruzena-slova {
+    align-self: center;
     > div {
         user-select: none;
         border-radius: 1em;
         border: $line-width solid #fff;
         text-align: justify;
         padding: 1em 1em .8em;
-        margin: 2em;
         .white {
             color: #fff;
         }
@@ -683,7 +685,7 @@ $transition: .1s;
         }
     }
     .svgWrapper {
-        height: 4em;
+        height: 5em;
         width: 100%;
         position: relative;
         overflow: visible;
@@ -707,9 +709,18 @@ $transition: .1s;
 }
 
 // padding
-#limitovana-nabidka, #falesna-volitelna-tlacitka, #nutnost-prihlaseni, #falesne-recenze, #skryte-poplatky  {
+#limitovana-nabidka, #falesna-volitelna-tlacitka, #dvojity-negativ, #nutnost-prihlaseni, #falesne-recenze, #skryte-poplatky, #svabi-motel, #pridruzena-slova  {
     padding: 2em;
     @media (max-width: $breakpoint) {
         padding: 1em;
+    }
+}
+
+#nucene-scrollovani, #neviditelne-pismo, #privacy-zuckering {
+    @media (min-width: $breakpoint) {
+        height: 100%;
+    }
+    @media (max-width: $breakpoint) {
+        height: 15em;
     }
 }
