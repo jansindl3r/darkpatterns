@@ -8,7 +8,33 @@
     -ms-transform: $property;
     -o-transform: $property;
     transform: $property;
-  }
+}
+
+@mixin flex {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin alignItems($position) {
+    align-items: $position;
+    -webkit-box-align: $position;
+    -webkit-flex-align: $position;
+    -ms-flex-align: $position;
+    -webkit-align-items: $position;
+}
+
+@mixin justifyContent {
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+@mixin gap($value) {
+    gap: $value;
+    grid-gap: $value;
+}
 
 @function zerofill($i) {
     @return #{str-slice("0000",0,2 - str-length(#{$i}))}+$i; 

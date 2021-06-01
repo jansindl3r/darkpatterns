@@ -1,7 +1,8 @@
 <div id="skryte-predplatne">
-    <img src="{{svgs['4_Skryte_predplatne']}}">
+    <!-- <img src="{{svgs['4_Skryte_predplatne']}}"> -->
+    {{svgs['4_Skryte_predplatne']}}
     <div id="months">
-        {% set months=["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"]%}
+        {% set months=["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec", "Leden"]%}
         {% for month in months %}
             <div>
                 <div class="month">{{month}}</div>

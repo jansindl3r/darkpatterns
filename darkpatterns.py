@@ -27,7 +27,13 @@ def categories(path):
         if illustration.exists():
             svgs = {}
             for svg in entry.glob("*.svg"):
-                svgs[svg.stem] = svg.relative_to(base)
+                with open(svg, "r") as input_file:
+                    svg_file = input_file.read()
+                    matches = list(re.finditer(r"(style)=.*stroke-width:\ ?\d+.*>", svg_file))
+                    for match in matches[::-1]:
+                        left = match.span()[0]
+                        svg_file = svg_file[:left] + ' vector-effect="non-scaling-stroke" ' + svg_file[left:]
+                    svgs[svg.stem] = svg_file
             with open(path/entry.stem/"file.html", "r") as input_file:
                 illustration = env.from_string(input_file.read()).render({"svgs": svgs})
             interactive = True
@@ -42,7 +48,7 @@ def categories(path):
             illustration = illustration.replace("<path", '<path vector-effect="non-scaling-stroke"')
             illustration_type = "image"
         
-        if entry.stem in ["5_Limitovana_nabidka", "23_Pridruzena_slova", "7_Nutnost_prihlaseni", "4_Skryte_predplatne"]:
+        if entry.stem in ["5_Limitovana_nabidka", "23_Pridruzena_slova", "7_Nutnost_prihlaseni", "4_Skryte_predplatne", "8_Falesne_recenze"]:
             interactive = False
             
         with open(entry/f"{entry.stem}.txt") as input_file:

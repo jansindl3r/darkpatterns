@@ -1,0 +1,20 @@
+<div id="falesne-recenze">
+{% set reviews=[
+    ["Jiří Conelže", "Kvalitní produkt za parádní cenu"],
+    ["Simona Upřímná", "Kvalitní produkt za parádní cenu"],
+    ["Jana Pravdivá", "Kvalitní produkt za parádní cenu"],
+    ["Karel Pravdomluvný", "Kvalitní produkt za parádní cenu"],
+    ["Veronika Nefalšovaná", "Kvalitní produkt za parádní cenu"],
+    ["Adéla Reálná", "Kvalitní produkt za parádní cenu"],
+    ]%}
+{% for name, review in reviews %}
+    <div class="svgWrapper">
+    {{svgs[loop.index|string]}}
+    </div>
+    <div class="reviewWrapper">
+        <div class="name">{{name}}</div>
+        <div class="stars"></div>
+        <div class="review">{{review}}</div>
+    </div>
+{% endfor %}
+</div>
