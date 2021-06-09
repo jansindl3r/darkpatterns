@@ -29,10 +29,12 @@ def categories(path):
             for svg in entry.glob("*.svg"):
                 with open(svg, "r") as input_file:
                     svg_file = input_file.read()
-                    matches = list(re.finditer(r"(style)=.*stroke-width:\ ?\d+.*>", svg_file))
+                    matches = list(re.finditer(r"(style)=.*stroke-width:\ ?(.*)px.*>", svg_file))
                     for match in matches[::-1]:
                         left = match.span()[0]
                         svg_file = svg_file[:left] + ' vector-effect="non-scaling-stroke" ' + svg_file[left:]
+                        left = match.span(2)[0]
+                        svg_file = svg_file[:left] + '1' + svg_file[left:]
                     svgs[svg.stem] = svg_file
             with open(path/entry.stem/"file.html", "r") as input_file:
                 illustration = env.from_string(input_file.read()).render({"svgs": svgs})

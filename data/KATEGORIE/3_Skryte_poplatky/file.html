@@ -1,46 +1,3 @@
-<!-- <div id="skryte-poplatky">
-    <div id="row">
-        <a class="btn active">1</a>
-        <a class="btn">2</a>
-    </div>
-    <div id="content">
-        <div id="image">image</div>
-        <div id="fields">
-            <div class="visible">
-                A
-            </div>
-            <div class="hidden">
-                B
-            </div>
-        </div>
-        <input type="button" onclick="skrytePoplatky()" value="další">
-    </div>
-    <script>
-        const row = document.querySelector("#skryte-poplatky>#row").children
-        const fields = document.querySelector("#skryte-poplatky>#content>#fields").children
-        const input = document.querySelector("#skryte-poplatky>#content>input")
-        const skrytePoplatky = () => {
-            for (let i=0; i < 2; i++) {
-                if (fields[i].classList.contains('visible')) {
-                    if (i == 1) {
-                        input.value = "dokončit"
-                    }
-                    else {
-                        input.value = "další"
-                    }
-                    fields[i].classList.remove('visible')
-                    fields[i].classList.add('hidden')
-                    fields[(i+1)%2].classList.remove("hidden")
-                    fields[(i+1)%2].classList.add("visible")
-                    row[i].classList.remove("active")
-                    row[(i+1)%2].classList.add("active")
-                    break
-                }
-            }
-        }
-    </script>
-</div> -->
-
 <div id="skryte-poplatky">
     <div>
         1
@@ -54,7 +11,7 @@
     <div>
         =
     </div>
-    <div>
+    <div onclick="skrytePoplatkyClick(this)">
        klikni 
     </div>
     <div>cena objednávky</div>
@@ -63,3 +20,12 @@
     <div></div>
     <div>součet objednávky</div>
 </div>
+
+<script>
+    const skrytePoplatkyClick = (el) => {
+        console.log(el, el.innerHTML)
+        el.innerHTML = "8"
+        el.onclick = ""
+        el.parentNode.className = "clicked"
+    }
+</script>

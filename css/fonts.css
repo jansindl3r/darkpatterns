@@ -1,13 +1,13 @@
 @font-face {
-  font-family: localNext;
+  font-family: localNext-Book;
   src: url("../data/font_NEXT/NEXT-Regular Book.woff2");
-  font-weight: 400 !important;
+  font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: localNext;
+  font-family: localNext-Medium;
   src: url("../data/font_NEXT/NEXT-Medium Book.woff2");
-  font-weight: 500 !important;
+  font-weight: 500;
   font-style: normal;
 }
 

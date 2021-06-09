@@ -12,8 +12,8 @@ html, body {
   max-width: 100vw;
   padding: 0;
   margin: 0;
-  font-family: "font";
-  font-weight: 400;
+  font-family: localNext-Book;
+  font-weight: 500;
   font-size: 16px;
   color: #111;
   overflow-x: hidden;
@@ -24,18 +24,25 @@ body {
   background: #eee2;
 }
 
-h1 {
+h1, h2, h3, .links {
+  font-family: localNext-Medium;
+}
+
+p + p {
+  margin-top: 1em;
+}
+
+h1, .links {
   line-height: 110%;
 }
 @media (max-width: 1000px) {
-  h1 {
+  h1, .links {
     font-size: 1.5rem;
   }
 }
 @media (min-width: 1000px) {
-  h1 {
+  h1, .links {
     font-size: 3rem;
-    line-height: 110%;
   }
 }
 
@@ -43,10 +50,24 @@ h2 {
   font-size: 1.75rem;
   line-height: 115%;
 }
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 1000px) {
+  h2 {
+    font-size: 1.75rem;
+  }
+}
 
 h3 {
   font-size: 1.5rem;
   padding: 0;
+  margin: 0;
+}
+h3 + * {
+  margin-top: 2rem !important;
 }
 
 a {
@@ -140,21 +161,96 @@ nav a:nth-child(5) {
 .entry-wrapper:nth-of-type(1) .button {
   background-color: black;
 }
+.entry-wrapper:nth-of-type(1) .button:hover {
+  background-color: #fff;
+  color: black;
+  position: relative;
+}
+.entry-wrapper:nth-of-type(1) .button:hover::after {
+  content: "";
+  border: black 1px solid;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
 
 .entry-wrapper:nth-of-type(3) .button {
   background-color: #ff2b06;
+}
+.entry-wrapper:nth-of-type(3) .button:hover {
+  background-color: #fff;
+  color: #ff2b06;
+  position: relative;
+}
+.entry-wrapper:nth-of-type(3) .button:hover::after {
+  content: "";
+  border: #ff2b06 1px solid;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 
 .entry-wrapper:nth-of-type(5) .button {
   background-color: #00e770;
 }
+.entry-wrapper:nth-of-type(5) .button:hover {
+  background-color: #fff;
+  color: #00e770;
+  position: relative;
+}
+.entry-wrapper:nth-of-type(5) .button:hover::after {
+  content: "";
+  border: #00e770 1px solid;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
 
 .entry-wrapper:nth-of-type(7) .button {
   background-color: #ff8bfc;
 }
+.entry-wrapper:nth-of-type(7) .button:hover {
+  background-color: #fff;
+  color: #ff8bfc;
+  position: relative;
+}
+.entry-wrapper:nth-of-type(7) .button:hover::after {
+  content: "";
+  border: #ff8bfc 1px solid;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
 
 .entry-wrapper:nth-of-type(9) .button {
   background-color: #f7901e;
+}
+.entry-wrapper:nth-of-type(9) .button:hover {
+  background-color: #fff;
+  color: #f7901e;
+  position: relative;
+}
+.entry-wrapper:nth-of-type(9) .button:hover::after {
+  content: "";
+  border: #f7901e 1px solid;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 
 p {
@@ -185,6 +281,14 @@ p {
   }
 }
 
+.links {
+  text-align: center;
+  line-height: 2em;
+}
+.links a, .links a:active, .links a:focus, .links a:visited {
+  color: inherit;
+}
+
 .profile {
   height: 2em;
   width: 2em;
@@ -213,10 +317,16 @@ p {
   top: 0;
 }
 
+@media (max-width: 1000px) {
+  article > * {
+    margin-right: 1.3rem !important;
+    margin-left: 1.3rem !important;
+  }
+}
 article > .divider {
   height: 8rem;
   width: 100%;
-  margin: 2rem 0;
+  margin: 2rem 0 !important;
 }
 @media (min-width: 1000px) {
   article > .divider {
@@ -278,13 +388,31 @@ p .button {
   color: #fff;
 }
 
+.category-entry .html .button {
+  font-size: 1rem;
+}
+.category-entry .html .button:hover {
+  background: #eee !important;
+  color: inherit;
+}
+.category-entry .html .button:hover::after {
+  border-color: black;
+  box-sizing: border-box;
+}
 @media (max-width: 1000px) {
   .category-entry {
     max-width: 72ch;
     margin: 2rem auto;
   }
+  .category-entry .hint {
+    display: none !important;
+  }
+  .category-entry h3 {
+    padding-top: 1.5rem;
+  }
   .category-entry .illustration {
     box-sizing: border-box;
+    margin-top: 0.5rem;
   }
   .category-entry .illustration.image {
     overflow: hidden;
@@ -309,7 +437,6 @@ p .button {
     overflow: hidden;
     flex-direction: row;
     min-height: 20em;
-    max-height: 30em;
     max-width: 130ch;
     margin: 4rem auto;
   }
@@ -324,7 +451,7 @@ p .button {
     max-width: 70ch;
   }
   .category-entry .illustration.html {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
 .category-entry .illustration, .category-entry .text {
@@ -346,8 +473,6 @@ p .button {
 }
 .category-entry .illustration svg {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: block;
   height: 100%;
 }

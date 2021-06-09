@@ -21,8 +21,8 @@ html, body {
     max-width: 100vw;
     padding: 0;
     margin: 0;
-    font-family: "font";
-    font-weight: 400;
+    font-family: localNext-Book;
+    font-weight: 500;
     font-size: 16px;
     color: $text-black;
     overflow-x: hidden;
@@ -33,25 +33,41 @@ body {
     background: #eee2;
 }
 
-h1 {
+h1, h2, h3, .links {
+    font-family: localNext-Medium;
+}
+p + p {
+    margin-top: 1em;
+}
+
+h1, .links {
     line-height: 110%;
     @media (max-width: $breakpoint) {
         font-size: 1.5rem;
     }
     @media (min-width: $breakpoint) {
         font-size: 3rem;
-        line-height: 110%;
     }
 }
 
 h2 {
     font-size: 1.75rem;
     line-height: 115%;
+    @media (max-width: $breakpoint) {
+        font-size: 1.25rem;
+    }
+    @media (min-width: $breakpoint) {
+        font-size: 1.75rem;
+    }
 }
 
 h3 {
     font-size: 1.5rem;
     padding: 0;
+    margin: 0;
+    & + * {
+        margin-top: 2rem !important;
+    }
 }
 
 a {
@@ -114,6 +130,21 @@ nav {
     .entry-wrapper:nth-of-type(#{$i*2-1}){
         .button {
             background-color: $color;
+            &:hover {
+                background-color: #fff;
+                color: $color;
+                position: relative;
+                &::after {
+                    content: "";
+                    border: $color 1px solid;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: inherit;
+                }
+            }
         }
     }
 }
@@ -141,6 +172,14 @@ p {
     top: -9rem;
     @media (min-width: $breakpoint) {
         top: -6rem;
+    }
+}
+
+.links {
+    text-align: center;
+    line-height: 2em;
+    a, a:active, a:focus, a:visited  {
+        color: inherit;
     }
 }
 
@@ -173,19 +212,27 @@ p {
     }
 }
 
-
-article > .divider {
-    height: 8rem;
-    width: 100%;
-    margin: 2rem 0;
-    @media (min-width: $breakpoint) {
-        margin: 5rem 0;
+article {
+    // background: pink;
+    @media (max-width: $breakpoint) {
+        > * {
+            margin-right: 1.3rem !important;
+            margin-left: 1.3rem !important;
+        }
     }
-    @for $i from 2 through length($categories-colors) {
-        $color: nth($categories-colors, $i);
-        &:nth-child(#{($i - 1) * 2}) {
-            @include mixins.smooth-opacity-gradient($color, 6);
-            // background: linear-gradient(rgba(255, 0, 0, 0), rgba(255, 0, 0, 1), rgba(255, 0, 0, 0));
+    > .divider {
+        height: 8rem;
+        width: 100%;
+        margin: 2rem 0 !important;
+        @media (min-width: $breakpoint) {
+            margin: 5rem 0;
+        }
+        @for $i from 2 through length($categories-colors) {
+            $color: nth($categories-colors, $i);
+            &:nth-child(#{($i - 1) * 2}) {
+                @include mixins.smooth-opacity-gradient($color, 6);
+                // background: linear-gradient(rgba(255, 0, 0, 0), rgba(255, 0, 0, 1), rgba(255, 0, 0, 0));
+            }
         }
     }
 }
@@ -233,11 +280,29 @@ p {
 }
 
 .category-entry {
+    .html .button {
+        font-size: 1rem;
+        &:hover {
+            background: #eee !important;
+            color: inherit;
+            &::after {
+                border-color: black;
+                box-sizing: border-box;
+            }
+        }
+    }
     @media (max-width: $breakpoint) {
+        .hint {
+            display: none !important;
+        }
+        h3 {
+            padding-top: 1.5rem;
+        }
         max-width: 72ch;
         margin: 2rem auto;
         .illustration {
             box-sizing: border-box;
+            margin-top: .5rem;
             &.image {
                 overflow: hidden;
                 height: 15em;
@@ -258,7 +323,6 @@ p {
             margin: 2rem;
         }
         min-height: 20em;
-        max-height: 30em;
         max-width: 130ch;
         margin: 4rem auto;
         &:nth-child(2n) {
@@ -268,7 +332,7 @@ p {
             max-width: 70ch;
         }
         .illustration.html {
-            font-size: 1.25rem;
+            font-size: 1rem;
         }
     }
     .illustration, .text {
@@ -282,8 +346,8 @@ p {
         position: relative;
         svg {
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            // left: 50%;
+            // transform: translateX(-50%);
             display: block;
             height: 100%;
         }
@@ -297,6 +361,7 @@ p {
             background: #f06000;
         }
     }
+    
     .hint {
         display: none;
         @media (hover:hover){

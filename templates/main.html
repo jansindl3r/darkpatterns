@@ -16,9 +16,6 @@
     <title>Darkpatterns</title>
 </head>
 <body>
-    <div class="link" id="uvod">
-    <div id="podklad"></div>
-    </div>
     <nav class="color-white">
         <a href="#uvod">úvod</a>
         <a href="#kategorie">kategorie</a>
@@ -26,9 +23,11 @@
         <a href="#uzitecne-odkazy">užitečné odkazy</a>
         <a href="#o-projektu">o projektu</a>
     </nav>
+    <div class="link" id="uvod">
+    </div>
     <article>
         {% for entry, id in zip(entries, ["uvod", "kategorie", "uzitecne-pluginy", "uzitecne-odkazy", "o-projektu"]) %}
-            <div class="entry-wrapper{% if loop.index0 >= 2 %} center-text text-tile{% endif %}">
+            <div class="entry-wrapper{% if loop.index0 >= 2 %} center-text{% endif %}">
                 {% if loop.index0 != 0 %}
                     <div class="link" id="{{id}}">
                     </div>
@@ -40,8 +39,13 @@
             </div>
             {% endif %}
         {% endfor %}
+        <div class="links">
+            <a href="https://www.facebook.com/groups/1106715309832098" target="_blank">FB</a>
+            <a href="https://www.instagram.com/p/CPpo2QchGsp" target="_blank">IG</a>
+            <a href="https://twitter.com/manipulativnid1" target="_blank">TW</a>
+        </div>
         <div class="center-text hidden">
-            <a id="download"  href="podklad.png" download="picture.png">download</a>
+            <a id="download"  href="assets/ilu_download.png" download="picture.png">download</a>
         </div>
     </article>
     <div class="divider-bottom">
