@@ -25,7 +25,7 @@ html, body {
     font-weight: 500;
     font-size: 16px;
     color: $text-black;
-    overflow-x: hidden;
+    // overflow-x: hidden; // broke sticky
     max-width: 100vw;
 }
 
@@ -76,10 +76,16 @@ a {
 
 
 nav {
+    position: sticky;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    top: 1rem;
+    position: -webkit-sticky;
+    z-index: 10000;
     color: white;
     flex-flow: row wrap;
     text-transform: uppercase;
-    
     font-size: 1rem;
     margin-top: 1em;
     padding-bottom: 1em;
@@ -98,13 +104,6 @@ nav {
             border-radius: .7em;
         }
     }
-    display: flex;
-    justify-content: center;
-    top: 1rem;
-    position: sticky;
-    position: -webkit-sticky;
-    z-index: 10000;
-    pointer-events: none;
     > * {
         margin-top: .5rem;
     }
@@ -114,15 +113,15 @@ nav {
     @for $i from 1 through length($categories-colors) {
         $color: nth($categories-colors, $i);
         a:nth-child(#{$i}) {
-          background-color: $color;
-          @media (hover:hover) {
-              &:hover {
-                  color: $color;
-                  background-color: white;
-              }
-          }
+            background-color: $color;
+            @media (hover:hover) {
+                &:hover {
+                    color: $color;
+                    background-color: white;
+                }
+            }
         }
-      }
+    }
 }
 
 @for $i from 1 through length($categories-colors) {
@@ -188,7 +187,7 @@ p {
     width: 2em;
     display: inline-block;
     position: relative;
-
+    
     &::before, &::after {
         background: #000;
     }
@@ -279,9 +278,15 @@ p {
     }
 }
 
+.bg-blue {
+    background: #0092fc !important;
+}
+
 .category-entry {
     .html .button {
         font-size: 1rem;
+        background: #FFF;
+        transition: opacity .1s ease-in;
         &:hover {
             background: #eee !important;
             color: inherit;
@@ -376,7 +381,7 @@ p {
     }
 }
 
-.button, input[type=button], input[type=submit] {
+.button, input[type=button], input[type=submit], button {
     outline: none;
     border: none;
     cursor: pointer;
@@ -464,7 +469,7 @@ input {
                 position: absolute;
                 border-radius: 100%;
             }
-
+            
         }
     }
 }

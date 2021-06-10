@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:list';
 @import "mixins";
 $transition: .1s;
 
@@ -151,18 +152,27 @@ $transition: .1s;
 #confirmshaming {
     align-self: center;
     margin: 0 auto;
-    div {
-        margin: 1em;
-        background: #fff;
-        opacity: 1;
-        transition: opacity $transition ease-in;
-        &:hover {
-            background: $positive;
-        }
+    display: flex;
+    button {
         &.clicked {
             opacity: 0;
             cursor: default;
+            & + .svg-wrapper {
+                opacity: 1 !important;
+                height: calc(100% - 4em);
+                
+            }
         }
+    }
+    .svg-wrapper {
+        position: absolute;
+        left: 0;
+        height: 0;
+        width: 100%;
+        top: 2em;
+        opacity: 0;
+        pointer-events: none;
+        transition: all ease-in .35s;
     }
 }
 
@@ -191,7 +201,8 @@ $transition: .1s;
 
 #falesna-CTA-tlacitka {
     width: 100%;
-    height: 100%;
+//     height: 100%;
+    align-self: center;
     user-select: none;
     display: block;
     position: relative;
@@ -199,11 +210,14 @@ $transition: .1s;
         transition: filter .1s ease-in;
         display: grid;
         grid-template-areas: 
-            "a a b b b"
-            "c c c d d"
-            "e e f d d"
-            "e e g g g"
+		"g g g a a d d"
+		"b b b e e d d"
+		"c c c e e f z"
         ;
+	//     "a a b b b"
+        //     "c c c d d"
+        //     "e e f d d"
+        //     "e e g g g"
         @media (min-width: 600px) and (max-width: $breakpoint) {
             grid-template-areas: 
                 "g g g c c c"
@@ -723,6 +737,120 @@ $transition: .1s;
         }
         .review {
             font-size: .7em;
+        }
+    }
+}
+
+@keyframes hard-click-falling {
+    from {
+        top: -50px;
+        // top: 0;
+    }
+    to {
+        top: calc( 100% + 50px );
+    }
+}
+
+@keyframes hard-click-left-to-right {
+    from {
+        padding-left: 0%;
+    }
+    to {
+        padding-left: 10%;
+    }
+}
+
+#hard-click {
+    user-select: none;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: default;
+    .hard-click-minutes, .hard-click-seconds {
+        &::after {
+            content: attr(data-value);
+        }
+    }
+    > div:not(#confetti), div:not(#confetti) .copy {
+        text-align: center;
+        background: #fff;
+        border-radius: 1em;
+        border: #000 1px solid;
+        // padding: 1em;
+        > * + *:not(.copy) {
+                margin-top: 1em !important;
+        }
+        >*:first-child {
+            margin-top: 1rem !important;
+        }
+        .button {
+            margin-bottom: 1rem;
+        }
+        > *:not(.copy) {
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+        &:not(.copy) {
+            margin: 2em;
+            position: relative;
+        }
+        &.copy {
+            margin: 0 !important;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+    }
+    > #confetti {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+        pointer-events: none;
+        > * {
+            position: absolute;
+            height: 100%;
+            width: 10px;
+            animation: hard-click-left-to-right ease-in-out infinite alternate;
+            animation-duration: 1s;
+            > * {
+                width: 20px;
+                background: black;
+                position: absolute;
+                animation: hard-click-falling linear infinite;
+                animation-duration: 10s;
+            }
+        }
+        $colors: purple, red, yellow, pink, green;
+        @for $i from 1 through length($colors) {
+            $color: list.nth($colors, $i);
+            > *:nth-child(5n+#{$i}) > * {
+                background: $color;
+                width: (6 + random(4)) + px;
+                height: (6 + random(4)) + px;
+            }
+        }
+
+        @for $i from 1 through 6 {
+            > *:nth-child(6n + #{$i}) {
+                > * {
+                    transform: skew((10 + random(10)) + deg) rotate((10 - random(20)) + deg);
+                }
+            }
+        }
+        @for $i from 1 through 50 {
+            > *:nth-child(#{$i}) {
+                left: random(100) * 1%;
+                animation-delay: 0 - (random(100)/100) + s;
+                > * {
+                    animation-duration: (3 + random(2)) + s;
+                    animation-delay: - random(100)/10 + s;
+                }
+            }
         }
     }
 }
