@@ -5,6 +5,7 @@ from pathlib import Path
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from bs4 import BeautifulSoup
 from random import random
+import htmlmin
 
 base = Path(__file__).parent
 
@@ -124,5 +125,7 @@ template = env.get_template('main.html')
 
 
 with open("index.html", "w+") as output_file:
-    output_file.write(BeautifulSoup(template.render(**context), 'html.parser').prettify())
+    html = template.render(**context)
+    html = htmlmin.minify(html, remove_comments=True, remove_empty_space=True)
+    output_file.write(html)
         
