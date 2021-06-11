@@ -4,6 +4,7 @@ import markdown
 from pathlib import Path 
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from bs4 import BeautifulSoup
+from random import random
 
 base = Path(__file__).parent
 
@@ -12,6 +13,23 @@ env.trim_blocks = True
 env.lstrip_blocks = True
 env.globals.update(zip=zip)
 
+def stroke_1px(svg_file):
+    matches = list(re.finditer(r"stroke-width:(\d+\.?\d*)px+?", svg_file))
+    for match in matches[::-1]:
+        left, right = match.span(1)
+        svg_file = svg_file[:left] + "1" + svg_file[right:]
+    return svg_file
+
+def randomize_id(svg_file):
+    matches = list(re.finditer(r"(_clip\d+)", svg_file))
+    ids = {}
+    for match in matches[::-1]:
+        clip_id = match.group()
+        if clip_id not in ids:
+            ids[clip_id] = f"clip_{round(random()*100000000000000)}"
+        left, right = match.span()
+        svg_file = svg_file[:left] + ids[clip_id] + svg_file[right:]
+    return svg_file
 
 def categories(path):
     with open(base/"square_entries.json") as input_file:
@@ -29,12 +47,13 @@ def categories(path):
             for svg in entry.glob("*.svg"):
                 with open(svg, "r") as input_file:
                     svg_file = input_file.read()
-                    matches = list(re.finditer(r"(style)=.*stroke-width:\ ?(.*)px.*>", svg_file))
+                    svg_file = randomize_id(svg_file)
+                    svg_file = stroke_1px(svg_file)
+                    matches = list(re.finditer(r"(style)=", svg_file))
                     for match in matches[::-1]:
-                        left = match.span()[0]
+                        left = match.span(1)[0]
                         svg_file = svg_file[:left] + ' vector-effect="non-scaling-stroke" ' + svg_file[left:]
-                        left = match.span(2)[0]
-                        svg_file = svg_file[:left] + '1' + svg_file[left:]
+
                     svgs[svg.stem] = svg_file
             with open(path/entry.stem/"file.html", "r") as input_file:
                 illustration = env.from_string(input_file.read()).render({"svgs": svgs})
@@ -44,7 +63,9 @@ def categories(path):
             interactive = False
             try:
                 with open(illustration.parent/f"{illustration.parent.stem}.svg", "r") as input_file:
-                    illustration = input_file.read() 
+                    illustration = stroke_1px(input_file.read())
+                    illustration = randomize_id(illustration)
+                    # illustration = input_file.read())
             except:
                 illustration = ""
             illustration = illustration.replace("<path", '<path vector-effect="non-scaling-stroke"')

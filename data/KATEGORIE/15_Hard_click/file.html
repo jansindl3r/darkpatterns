@@ -35,9 +35,9 @@
 	const mainBox = el.getBoundingClientRect()
     const copy = el.firstElementChild.lastElementChild.cloneNode(deep=true)
     let offset = parseInt(copy.dataset.offset) + 15
-	if ((offset - 15) > (mainBox.height - box.top)) {
-        offset = - (box.height + box.top)
-	}
+	// if ((offset - 15) > (mainBox.height - box.top)) {
+    //    offset = - (box.height + box.top)
+	//}
     copy.dataset.offset = offset.toString()
     copy.style.top = `${offset}px`
     copy.style.left = `${offset}px`

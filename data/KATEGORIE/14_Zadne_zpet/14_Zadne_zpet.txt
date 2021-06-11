@@ -1,1 +1,3 @@
-Žádné tlačítko zpět (vizuální zmatení)Okna s upozorněním, která nenabízejí leave button — všechny možnosti vedou k potvrzení akce. Např.: uživatel Instagramu je pod tlakem, aby si zapnul oznámení, ovšem s možnostmi „Not now“ a „OK“. Spotify app nabízí pouze „Not now“. Možnost „Cancel“ není k dispozici a aplikace mu bude nadále nabízet upozornění, dokud potvrzení nepodlehne.
+Žádné tlačítko zpět (vizuální&nbsp;zmatení)
+
+Okna s upozorněním, která nenabízejí leave button — všechny možnosti vedou k potvrzení akce. Např.: uživatel Instagramu je pod tlakem, aby si zapnul oznámení, ovšem s možnostmi „Not now“ a „OK“. Spotify app nabízí pouze „Not now“. Možnost „Cancel“ není k dispozici a aplikace mu bude nadále nabízet upozornění, dokud potvrzení nepodlehne.

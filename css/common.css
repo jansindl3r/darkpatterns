@@ -1,3 +1,21 @@
+@media (max-width: 1000px) {
+  .phone-only {
+    display: inline;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}
+@media (min-width: 1000px) {
+  .phone-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: inline;
+  }
+}
 .center-text {
   max-width: 72ch;
   margin: 0 auto;
@@ -118,6 +136,17 @@ nav a:nth-child(1) {
   nav a:nth-child(1):hover {
     color: black;
     background-color: white;
+    position: relative;
+  }
+  nav a:nth-child(1):hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: black 1px solid;
+    border-radius: inherit;
   }
 }
 nav a:nth-child(2) {
@@ -127,6 +156,17 @@ nav a:nth-child(2) {
   nav a:nth-child(2):hover {
     color: #ff2b06;
     background-color: white;
+    position: relative;
+  }
+  nav a:nth-child(2):hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: #ff2b06 1px solid;
+    border-radius: inherit;
   }
 }
 nav a:nth-child(3) {
@@ -136,6 +176,17 @@ nav a:nth-child(3) {
   nav a:nth-child(3):hover {
     color: #00e770;
     background-color: white;
+    position: relative;
+  }
+  nav a:nth-child(3):hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: #00e770 1px solid;
+    border-radius: inherit;
   }
 }
 nav a:nth-child(4) {
@@ -145,6 +196,17 @@ nav a:nth-child(4) {
   nav a:nth-child(4):hover {
     color: #ff8bfc;
     background-color: white;
+    position: relative;
+  }
+  nav a:nth-child(4):hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: #ff8bfc 1px solid;
+    border-radius: inherit;
   }
 }
 nav a:nth-child(5) {
@@ -154,7 +216,28 @@ nav a:nth-child(5) {
   nav a:nth-child(5):hover {
     color: #f7901e;
     background-color: white;
+    position: relative;
   }
+  nav a:nth-child(5):hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: #f7901e 1px solid;
+    border-radius: inherit;
+  }
+}
+
+#categories-intro {
+  max-width: 90ch;
+  margin: 0 auto;
+  color: #0092fc;
+}
+#categories-intro h2 {
+  font-weight: 500;
+  text-align: center;
 }
 
 .entry-wrapper:nth-of-type(1) .button {
@@ -287,10 +370,14 @@ p {
 .links a, .links a:active, .links a:focus, .links a:visited {
   color: inherit;
 }
+.links > * + * {
+  margin-left: 2ch;
+}
 
 .profile {
-  height: 2em;
-  width: 2em;
+  height: 1.5em;
+  width: 1.5em;
+  flex-shrink: 0;
   display: inline-block;
   position: relative;
 }
@@ -491,11 +578,14 @@ p .button {
   background: #f06000;
 }
 .category-entry .hint {
+  margin-top: 0.5em;
   display: none;
+  font-family: localNext-Mono, monospace;
+  font-size: 0.6rem;
 }
 @media (hover: hover) {
   .category-entry .hint {
-    display: inline;
+    display: inline-block;
     cursor: pointer;
   }
   .category-entry .hint:hover > span:last-child {
@@ -504,10 +594,10 @@ p .button {
 }
 
 .button, input[type=button], input[type=submit], button {
+  font-family: localNext-Book;
   outline: none;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
   border-radius: 0.5em;
   text-align: center;
   margin: 0.3em 0.1em;
@@ -546,6 +636,7 @@ input ::placeholder {
   background: #fff;
   border: 1px solid gray;
   box-sizing: border-box;
+  border-radius: 0.25em;
 }
 .checkbox input {
   opacity: 0;

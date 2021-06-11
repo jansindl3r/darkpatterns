@@ -144,7 +144,9 @@ $transition: .1s;
                 font-size: 6rem;
             }
             position: relative; // solve this for iphone
-
+        }
+        &:last-child {
+            color: #FFF;
         }
     }
 }
@@ -210,14 +212,11 @@ $transition: .1s;
         transition: filter .1s ease-in;
         display: grid;
         grid-template-areas: 
-		"g g g a a d d"
-		"b b b e e d d"
-		"c c c e e f z"
+	        "a a b b b"
+            "c c c d d"
+            "e e f d d"
+            "e e g g g"
         ;
-	//     "a a b b b"
-        //     "c c c d d"
-        //     "e e f d d"
-        //     "e e g g g"
         @media (min-width: 600px) and (max-width: $breakpoint) {
             grid-template-areas: 
                 "g g g c c c"
@@ -335,8 +334,11 @@ $transition: .1s;
     ;
     user-select: none;
     grid-template-rows: auto 5em;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: auto auto;
     @include gap(1rem);
+    @media (max-width: $breakpoint) {
+        @include gap(.5rem);
+    }
     color: #000;
     > div {
         border-radius: 1em;
@@ -355,6 +357,9 @@ $transition: .1s;
         .time {
             user-select: none;
             font-size: 2em;
+            @media (max-width: $breakpoint) {
+                font-size: 1.5em;
+            }
             font-variant-numeric: tabular-nums;
             display: flex;
             > .minutes::before {
@@ -374,14 +379,21 @@ $transition: .1s;
             margin-left: 1rem;
         }
         .kolac {
-            min-width: 3em;
-            min-height: 3em;
+            width: 3em;
+            height: 3em;
+            flex-shrink: 0;
+            @media (max-width: $breakpoint) {
+                width: 1.5em;
+                height: 1.5em;
+            }
             background: transparent;
             border: $line-width solid #000;
             border-radius: 100%;
             position: relative;
             overflow: hidden;
             &::after {
+                transform: skewY(-45deg);
+                transform-origin: 0 0;
                 content: "";
                 width: 50%;
                 height: 50%;
@@ -400,8 +412,14 @@ $transition: .1s;
         grid-area: c;
         display: flex;
         align-items: center;
+        justify-content: center;
         & > * + * {
-            margin-left: .5em;
+            margin-left: 1em;
+            font-size: 1.5em;
+            @media (max-width: $breakpoint) {
+                font-size: 1em;
+                
+            }
         }
     }
 }
@@ -473,6 +491,17 @@ $transition: .1s;
             position: absolute;
             &:nth-child(1) {
                 background-image: url(../data/KATEGORIE/2_Privacy_zuckering/zuck_ghost.svg);
+                // &::before {
+                //     content: "";
+                //     background: #FFF;
+                //     position: absolute;
+                //     left: 0;
+                //     top: 0;
+                //     width: 100%;
+                //     height: 100%;
+                //     filter: blur(10px);
+                //     border-radius: inherit;
+                // }
             }
             &:nth-child(2) {
                 background-image: url(../data/KATEGORIE/2_Privacy_zuckering/zuck.svg);
@@ -602,7 +631,7 @@ $transition: .1s;
     > div {
         user-select: none;
         border-radius: 1em;
-        border: $line-width solid #fff;
+        border: $line-width solid #000;
         padding: 1em 1em .8em 1em;
         p {
             text-align: justify;
@@ -717,7 +746,10 @@ $transition: .1s;
         overflow: visible;
     }
     .reviewWrapper {
-        padding: .2em;
+        padding: 1em;
+        @media (max-width: $breakpoint) {
+            padding: .2em;
+        }
         margin: -.5em;
         border: $line-width #000 solid;
         border-radius: 1em;

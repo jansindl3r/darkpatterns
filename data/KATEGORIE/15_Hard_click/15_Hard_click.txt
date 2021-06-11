@@ -1,1 +1,5 @@
-Hard click reklamní oknoMetoda, která ve formě adware/malware vyskakovacích oken nutí návštěvníka po kliknutí kamkoliv (zavřít, potvrdit, plocha reklamy) nalákat na reklamní sdělení. Klasickým příkladem, který už je spíše na ústupu (je už příliš rozeznatelný), je oznámení o výběru vaší IP adresy a získání odměny v podobě nového telefonu, sluchátek atp.).
+Hard click reklamní okno
+
+Metoda, která ve formě adware/malware vyskakovacích oken nutí návštěvníka po kliknutí kamkoliv (zavřít, potvrdit, plocha reklamy) nalákat na reklamní sdělení. Klasickým příkladem, který už je spíše na ústupu (je už příliš rozeznatelný), je oznámení o výběru vaší IP adresy a získání odměny v podobě nového telefonu, sluchátek atp.).
+
+(hint: Klikni kamkoliv)

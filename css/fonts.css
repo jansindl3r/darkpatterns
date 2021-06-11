@@ -10,5 +10,11 @@
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: localNext-Mono;
+  src: url("../data/font_NEXT/NEXT-Thin Mono.woff2");
+  font-weight: 200;
+  font-style: normal;
+}
 
 /*# sourceMappingURL=fonts.css.map */

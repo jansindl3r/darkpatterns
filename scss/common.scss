@@ -7,6 +7,24 @@ $static-pic-background: rgb(0, 146, 252);
 $categories-colors: rgba(0, 0, 0, 1), rgba(255, 43, 6, 1), rgba(0, 231, 112, 1), rgba(255, 139, 252, 1), rgba(247, 144, 30, 1);
 $text-black: #111;
 
+@media (max-width: $breakpoint) {
+    .phone-only {
+        display: inline;
+    }
+    .desktop-only {
+        display: none;
+    }
+}
+@media (min-width: $breakpoint) {
+    .phone-only {
+        display: none;
+    }
+    .desktop-only {
+        display: inline;
+    }
+}
+
+
 .center-text {
     max-width: 72ch;
     margin: 0 auto;
@@ -118,9 +136,30 @@ nav {
                 &:hover {
                     color: $color;
                     background-color: white;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+                        width: 100%;
+                        border: $color 1px solid;
+                        border-radius: inherit;
+                    }
                 }
             }
         }
+    }
+}
+
+#categories-intro {
+    max-width: 90ch;
+    margin: 0 auto;
+    color: $static-pic-background;
+    h2 {
+        font-weight: 500;
+        text-align: center;
     }
 }
 
@@ -180,11 +219,15 @@ p {
     a, a:active, a:focus, a:visited  {
         color: inherit;
     }
+    > * + * {
+        margin-left: 2ch;
+    }
 }
 
 .profile {
-    height: 2em;
-    width: 2em;
+    height: 1.5em;
+    width: 1.5em;
+    flex-shrink: 0;
     display: inline-block;
     position: relative;
     
@@ -368,9 +411,12 @@ p {
     }
     
     .hint {
+        margin-top: .5em;
         display: none;
+        font-family: localNext-Mono, monospace;
+        font-size: .6rem;
         @media (hover:hover){
-            display: inline;
+            display: inline-block;
             cursor: pointer;
             &:hover {
                 > span:last-child {
@@ -382,10 +428,10 @@ p {
 }
 
 .button, input[type=button], input[type=submit], button {
+    font-family: localNext-Book;
     outline: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
     border-radius: .5em;
     text-align: center;
     margin: .3em .1em;
@@ -426,6 +472,7 @@ input {
         background: #fff;
         border: $line-width solid gray;
         box-sizing: border-box;
+        border-radius: .25em;
     }
     input {
         opacity: 0;
